@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Vacation.Core.Domain.Entities;
 using Vacation.Core.Domain.Factories;
 using Vacation.Core.Domain.Helpers;
@@ -5,15 +8,26 @@ using Vacation.Core.Domain.Services.Workflow.Steps;
 
 namespace Vacation.Core.Domain.Services.Workflow;
 
+/// <summary>
+/// Main workflow service.
+/// </summary>
 public class MainWorkflowService : IWorkflowService
 {
     private readonly IRepository<HistoryOfApprovingRequest> _repository;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainWorkflowService"/> class.
+    /// </summary>
+    /// <param name="repository">The repository for history of approving requests.</param>
     public MainWorkflowService(IRepository<HistoryOfApprovingRequest> repository)
     {
         _repository = repository;
     }
 
+    /// <summary>
+    /// Gets the title of the workflow.
+    /// </summary>
+    /// <returns>The title.</returns>
     public string GetTitle()
     {
         return "Main";
@@ -27,6 +41,11 @@ public class MainWorkflowService : IWorkflowService
         { "approving_by_boss", "approving_by_big_boss" }
     };
 
+    /// <summary>
+    /// Runs the workflow asynchronously for the request.
+    /// </summary>
+    /// <param name="request">The request.</param>
+    /// <returns>The result of running the workflow.</returns>
     public async Task<Result<bool>> RunAsync(Request request)
     {
         Result<IReadOnlyList<HistoryOfApprovingRequest>> historyResult =
@@ -38,7 +57,7 @@ public class MainWorkflowService : IWorkflowService
         }
 
         string nextStep;
-        var last = historyResult.Data.LastOrDefault();
+        var last = historyResult.Data != null ? historyResult.Data[historyResult.Data.Count - 1] : null;
         if (last == null)
         {
             nextStep = scheme["first"];
@@ -53,13 +72,24 @@ public class MainWorkflowService : IWorkflowService
         if (!stepResult.IsSuccess)
         {
             return new Result<bool>().AddError(stepResult.GetErrorsString());
-            ;
+        }
+
+        Result<bool> saveResult = await SaveStepAsync(request, step.GetTitle()).ConfigureAwait(false);
+        if (!saveResult.IsSuccess)
+        {
+            return new Result<bool>().AddError(saveResult.GetErrorsString());
         }
 
         return stepResult;
     }
 
-    public async Task<Result<bool>> SaveState(Request request, string stepTitle)
+    /// <summary>
+    /// Saves the step asynchronously for the request.
+    /// </summary>
+    /// <param name="request">The request.</param>
+    /// <param name="stepTitle">The step title.</param>
+    /// <returns>The result of saving the step.</returns>
+    public async Task<Result<bool>> SaveStepAsync(Request request, string stepTitle)
     {
         HistoryOfApprovingRequest history = HistoryOfApprovingFactory.Create(request, GetTitle(), stepTitle);
         var result = await _repository.SaveAsync(history).ConfigureAwait(false);

@@ -3,6 +3,9 @@ using Vacation.Core.Domain.Helpers;
 
 namespace Vacation.Core.Domain.Services.Directory;
 
+/// <summary>
+/// Service for managing departments.
+/// </summary>
 public class DepartmentService : IDepartmentService
 {
     private readonly IRepository<Department> _departmentRepository;
@@ -12,6 +15,11 @@ public class DepartmentService : IDepartmentService
         _departmentRepository = departmentRepository;
     }
 
+    /// <summary>
+    /// Gets the workflow title asynchronously.
+    /// </summary>
+    /// <param name="departmentId">The department ID.</param>
+    /// <returns>The result with the workflow title.</returns>
     public async Task<Result<string>> GetWorkflowTitleAsync(int departmentId)
     {
         Result<IReadOnlyList<Department>> departmentResult =
@@ -21,7 +29,9 @@ public class DepartmentService : IDepartmentService
             return new Result<string>().AddError(departmentResult.GetErrorsString());
         }
 
-        string workFlowApprovingTitle = departmentResult.Data[0].WorkFlowApprovingTitle;
+        string workFlowApprovingTitle = (departmentResult.Data != null)
+            ? departmentResult.Data[0].WorkFlowApprovingTitle
+            : String.Empty;
         if (string.IsNullOrEmpty(workFlowApprovingTitle))
         {
             return new Result<string>().AddError("WorkFlow approving title is empty");

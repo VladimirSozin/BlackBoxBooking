@@ -2,8 +2,16 @@ using Vacation.Core.Domain.Services.Workflow.Steps;
 
 namespace Vacation.Core.Domain.Factories;
 
-public class WorkflowStepFactory
+/// <summary>
+/// Factory for creating workflow steps.
+/// </summary>
+public static class WorkflowStepFactory
 {
+    /// <summary>
+    /// Creates a workflow step based on the title.
+    /// </summary>
+    /// <param name="title">The title.</param>
+    /// <returns>The workflow step.</returns>
     public static IWorkflowStep Create(string title)
     {
         switch (title)

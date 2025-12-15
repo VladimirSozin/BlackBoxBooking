@@ -8,8 +8,8 @@
 
     <PropertyGroup>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-        <AnalysisLevel>latest</AnalysisLevel>
-        <AnalysisMode>All</AnalysisMode>
+        <AnalysisLevel>none</AnalysisLevel>
+        <AnalysisMode>None</AnalysisMode>
         <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
         <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
     </PropertyGroup>

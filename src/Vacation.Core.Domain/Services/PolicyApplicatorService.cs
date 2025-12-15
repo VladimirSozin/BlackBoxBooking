@@ -5,15 +5,27 @@ using Vacation.Core.Domain.Helpers;
 
 namespace Vacation.Core.Domain.Services;
 
+/// <summary>
+/// Service for applying policies.
+/// </summary>
 public class PolicyApplicatorService : IPolicyApplicatorService
 {
     private readonly IRepository<Policy> _policyRepository;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PolicyApplicatorService"/> class.
+    /// </summary>
+    /// <param name="policyRepository">The policy repository.</param>
     public PolicyApplicatorService(IRepository<Policy> policyRepository)
     {
         _policyRepository = policyRepository;
     }
 
+    /// <summary>
+    /// Applies policies asynchronously.
+    /// </summary>
+    /// <param name="request">The request.</param>
+    /// <returns>The result.</returns>
     public async Task<Result<bool>> ApplyPoliciesAsync(Request request)
     {
         Result<bool> result = new();
@@ -27,7 +39,7 @@ public class PolicyApplicatorService : IPolicyApplicatorService
         }
 
         bool isSucess = false;
-        foreach (var policy in getPolicyResult.Data)
+        foreach (var policy in getPolicyResult.Data ?? [])
         {
             IPolicyService policyService = PolicyFactory.CreatePolicy(policy);
             isSucess &= policyService.Apply(request);
