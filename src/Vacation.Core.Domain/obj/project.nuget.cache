@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "T1XbaAw+69E=",
+  "success": true,
+  "projectFilePath": "/home/dimm/projects/BlackBoxBooking/src/Vacation.Core.Domain/Vacation.Core.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/dimm/.nuget/packages/microsoft.aspnetcore.openapi/9.0.10/microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "/home/dimm/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

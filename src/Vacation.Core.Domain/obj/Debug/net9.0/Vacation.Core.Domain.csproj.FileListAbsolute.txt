@@ -1,0 +1,15 @@
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.csproj.AssemblyReference.cache
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.AssemblyInfoInputs.cache
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.AssemblyInfo.cs
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.csproj.CoreCompileInputs.cache
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.sourcelink.json
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/bin/Debug/net9.0/Vacation.Core.Domain.deps.json
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/bin/Debug/net9.0/Vacation.Core.Domain.dll
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/bin/Debug/net9.0/Vacation.Core.Domain.pdb
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/bin/Debug/net9.0/Vacation.Core.Domain.xml
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.dll
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/refint/Vacation.Core.Domain.dll
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.xml
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/Vacation.Core.Domain.pdb
+/home/dimm/projects/c#/OTUS-CSharp-2025-Group2/src/Vacation.Core.Domain/obj/Debug/net9.0/ref/Vacation.Core.Domain.dll
