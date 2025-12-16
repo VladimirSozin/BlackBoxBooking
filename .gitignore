@@ -1,8 +1,8 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/.vs
-/blackboxboard.client
-/BlackBoxBoard.Server
-/BlackBoxBoard.slnx
+/.vs/BlackBoxBoard.slnx/FileContentIndex/04793a6e-184d-4c79-b673-3a6384a89092.vsidx
+/.vs/BlackBoxBoard.slnx/FileContentIndex/2416006d-7ee8-438a-b523-095d2f18ac1e.vsidx
+/.vs/BlackBoxBoard.slnx/FileContentIndex/a43e3dad-dc60-4af2-8439-c0d2bfffd63c.vsidx
+/.vs/BlackBoxBoard.slnx/FileContentIndex/a71e5401-05ff-4887-bedc-3ba765d3a7b7.vsidx
+/.vs/BlackBoxBoard.slnx/FileContentIndex/cc85836b-e244-46c8-b6fc-87879ed9ddc9.vsidx
