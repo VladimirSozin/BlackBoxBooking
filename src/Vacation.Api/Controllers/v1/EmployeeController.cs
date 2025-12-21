@@ -4,6 +4,9 @@ using Vacation.Core.Application.Dto.Requests;
 
 namespace Vacation.Api.Controllers.v1;
 
+/// <summary>
+/// Controller for managing employees.
+/// </summary>
 [ApiController]
 [AllowAnonymous]
 [Route("api/v1/employee")]
