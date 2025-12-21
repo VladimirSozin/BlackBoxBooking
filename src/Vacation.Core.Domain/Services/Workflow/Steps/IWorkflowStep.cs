@@ -17,7 +17,7 @@ public interface IWorkflowStep
     /// <summary>
     /// Runs the step for the request.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result of running the step.</returns>
-    Result<bool> RunStep(Request request);
+    Result<bool> RunStep(Entities.Vacation vacation);
 }

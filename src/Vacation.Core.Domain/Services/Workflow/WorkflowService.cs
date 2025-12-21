@@ -13,13 +13,13 @@ namespace Vacation.Core.Domain.Services.Workflow;
 /// </summary>
 public class MainWorkflowService : IWorkflowService
 {
-    private readonly IRepository<HistoryOfApprovingRequest> _repository;
+    private readonly IRepository<VacationHistory> _repository;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWorkflowService"/> class.
     /// </summary>
     /// <param name="repository">The repository for history of approving requests.</param>
-    public MainWorkflowService(IRepository<HistoryOfApprovingRequest> repository)
+    public MainWorkflowService(IRepository<VacationHistory> repository)
     {
         _repository = repository;
     }
@@ -44,12 +44,12 @@ public class MainWorkflowService : IWorkflowService
     /// <summary>
     /// Runs the workflow asynchronously for the request.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result of running the workflow.</returns>
-    public async Task<Result<bool>> RunAsync(Request request)
+    public async Task<Result<bool>> RunAsync(Entities.Vacation vacation)
     {
-        Result<IReadOnlyList<HistoryOfApprovingRequest>> historyResult =
-            await _repository.GetAsync(c => c.RequestId == request.Id).ConfigureAwait(false);
+        Result<IReadOnlyList<VacationHistory>> historyResult =
+            await _repository.GetAsync(c => c.VacationId == vacation.Id).ConfigureAwait(false);
 
         if (!historyResult.IsSuccess)
         {
@@ -68,13 +68,13 @@ public class MainWorkflowService : IWorkflowService
         }
 
         IWorkflowStep step = WorkflowStepFactory.Create(nextStep);
-        Result<bool> stepResult = step.RunStep(request);
+        Result<bool> stepResult = step.RunStep(vacation);
         if (!stepResult.IsSuccess)
         {
             return new Result<bool>().AddError(stepResult.GetErrorsString());
         }
 
-        Result<bool> saveResult = await SaveStepAsync(request, step.GetTitle()).ConfigureAwait(false);
+        Result<bool> saveResult = await SaveStepAsync(vacation, step.GetTitle()).ConfigureAwait(false);
         if (!saveResult.IsSuccess)
         {
             return new Result<bool>().AddError(saveResult.GetErrorsString());
@@ -86,12 +86,12 @@ public class MainWorkflowService : IWorkflowService
     /// <summary>
     /// Saves the step asynchronously for the request.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <param name="stepTitle">The step title.</param>
     /// <returns>The result of saving the step.</returns>
-    public async Task<Result<bool>> SaveStepAsync(Request request, string stepTitle)
+    public async Task<Result<bool>> SaveStepAsync(Entities.Vacation vacation, string stepTitle)
     {
-        HistoryOfApprovingRequest history = HistoryOfApprovingFactory.Create(request, GetTitle(), stepTitle);
+        VacationHistory history = HistoryOfApprovingFactory.Create(vacation, GetTitle(), stepTitle);
         var result = await _repository.SaveAsync(history).ConfigureAwait(false);
         return result.IsSuccess ? new Result<bool>() : new Result<bool>().AddError(result.GetErrorsString());
     }

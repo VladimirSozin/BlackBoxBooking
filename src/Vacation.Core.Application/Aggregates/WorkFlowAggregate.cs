@@ -18,10 +18,10 @@ public class WorkFlowAggregate : IWorkFlowAggregate
         _workflowFactory = workflowFactory;
     }
 
-    public async Task<Result<bool>> RunNextAsync(Request request)
+    public async Task<Result<bool>> RunNextAsync(Domain.Entities.Vacation vacation)
     {
         Result<string> departmentResult =
-            await _departmentService.GetWorkflowTitleAsync(request.DepartmentId).ConfigureAwait(false);
+            await _departmentService.GetWorkflowTitleAsync(vacation.DepartmentId).ConfigureAwait(false);
 
         if (!departmentResult.IsSuccess)
         {
@@ -29,7 +29,7 @@ public class WorkFlowAggregate : IWorkFlowAggregate
         }
 
         IWorkflowService workflowService = _workflowFactory.CreateWokflow(departmentResult.Data);
-        Result<bool> workFlowResult = await workflowService.RunAsync(request).ConfigureAwait(false);
+        Result<bool> workFlowResult = await workflowService.RunAsync(vacation).ConfigureAwait(false);
         if (!workFlowResult.IsSuccess)
         {
             return new Result<bool>().AddError(workFlowResult.GetErrorsString());

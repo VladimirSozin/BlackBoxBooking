@@ -1,10 +1,9 @@
-using Vacation.Core.Domain.Entities;
 using Vacation.Core.Domain.ValueObjects;
 
-namespace Vacation.Core.Application.Dto;
+namespace Vacation.Core.Application.Dto.Requests;
 
 
-public record RequestCreateDto(
+public record CreateVacationRequestDto(
 
     int EmployeeId,
     int DepartmentId,

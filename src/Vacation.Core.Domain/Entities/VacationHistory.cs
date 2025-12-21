@@ -3,12 +3,12 @@ namespace Vacation.Core.Domain.Entities;
 /// <summary>
 /// Represents the history of approving a request.
 /// </summary>
-public class HistoryOfApprovingRequest
+public class VacationHistory
 {
     /// <summary>
-    /// Gets or sets the request ID.
+    /// Gets or sets the vacation ID.
     /// </summary>
-    public int RequestId { get; set; }
+    public int VacationId { get; set; }
 
     /// <summary>
     /// Gets or sets the workflow title.

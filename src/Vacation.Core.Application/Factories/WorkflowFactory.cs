@@ -6,8 +6,8 @@ namespace Vacation.Core.Application.Factories;
 
 public class WorkflowFactory
 {
-    private readonly IRepository<HistoryOfApprovingRequest> _repository;
-    public WorkflowFactory(IRepository<HistoryOfApprovingRequest> repository)
+    private readonly IRepository<VacationHistory> _repository;
+    public WorkflowFactory(IRepository<VacationHistory> repository)
     {
         _repository = repository;
     }

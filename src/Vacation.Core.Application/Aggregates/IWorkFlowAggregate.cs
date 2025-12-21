@@ -6,5 +6,5 @@ namespace Vacation.Core.Application.Aggregates;
 
 public interface IWorkFlowAggregate
 {
-    Task<Result<bool>> RunNextAsync(Request request);
+    Task<Result<bool>> RunNextAsync(Domain.Entities.Vacation vacation);
 }

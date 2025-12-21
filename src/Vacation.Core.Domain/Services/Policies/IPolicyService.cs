@@ -10,7 +10,7 @@ public interface IPolicyService
     /// <summary>
     /// Applies the policy.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>True if the request is allowed, otherwise false.</returns>
-    bool Apply(Request request);
+    bool Apply(Entities.Vacation vacation);
 }

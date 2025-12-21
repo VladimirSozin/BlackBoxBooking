@@ -19,12 +19,12 @@ public class BeforeNYDenyPolicyService : BasePolicyService, IPolicyService
     /// <summary>
     /// Applies the policy to the request.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>True if the request is allowed, otherwise false.</returns>
-    public bool Apply(Request request)
+    public bool Apply(Entities.Vacation vacation)
     {
         //это хардкод, просто для ясности
-        if (Policy.DepartmentId == 1 && request.DateStart.Month == 12 && request.DateStart.Day >= 14)
+        if (Policy.DepartmentId == 1 && vacation.DateStart.Month == 12 && vacation.DateStart.Day >= 14)
         {
             return false;
         }

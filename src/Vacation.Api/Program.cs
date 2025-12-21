@@ -1,23 +1,20 @@
+using Vacation.Api;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApi();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+using (var app = builder.Build())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/Swagger/v1/swagger.json", "General");
+        c.RoutePrefix = string.Empty;
+        c.DisplayRequestDuration();
+    });
+    app.MapControllers();
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-
-app.MapGet("/", () => "I'm fine!")
-    .WithName("BlackBox")
-    .WithOpenApi();
-
-app.Run();

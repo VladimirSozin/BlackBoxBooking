@@ -24,14 +24,14 @@ public class PolicyApplicatorService : IPolicyApplicatorService
     /// <summary>
     /// Applies policies asynchronously.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result.</returns>
-    public async Task<Result<bool>> ApplyPoliciesAsync(Request request)
+    public async Task<Result<bool>> ApplyPoliciesAsync(Entities.Vacation vacation)
     {
         Result<bool> result = new();
 
         Result<IReadOnlyList<Policy>> getPolicyResult =
-            await _policyRepository.GetAsync(c => c.DepartmentId == request.DepartmentId).ConfigureAwait(false);
+            await _policyRepository.GetAsync(c => c.DepartmentId == vacation.DepartmentId).ConfigureAwait(false);
 
         if (!getPolicyResult.IsSuccess)
         {
@@ -42,7 +42,7 @@ public class PolicyApplicatorService : IPolicyApplicatorService
         foreach (var policy in getPolicyResult.Data ?? [])
         {
             IPolicyService policyService = PolicyFactory.CreatePolicy(policy);
-            isSucess &= policyService.Apply(request);
+            isSucess &= policyService.Apply(vacation);
         }
 
         result.Data = isSucess;

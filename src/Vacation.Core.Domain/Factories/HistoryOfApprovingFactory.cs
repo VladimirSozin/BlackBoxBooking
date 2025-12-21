@@ -10,17 +10,17 @@ public static class HistoryOfApprovingFactory
     /// <summary>
     /// Creates a new instance of <see cref="HistoryOfApprovingRequest"/>.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <param name="workflowTitle">The workflow title.</param>
     /// <param name="workflowStep">The workflow step.</param>
     /// <returns>The created history of approving request.</returns>
-    public static HistoryOfApprovingRequest Create(Request request, string workflowTitle, string workflowStep)
+    public static VacationHistory Create(Entities.Vacation vacation, string workflowTitle, string workflowStep)
     {
-        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(vacation);
 
-        return new HistoryOfApprovingRequest()
+        return new VacationHistory()
         {
-            RequestId = request.Id,
+            VacationId = vacation.Id,
             WorkFlowStepTitle = workflowStep,
             WorkFlowTitle = workflowTitle
         };

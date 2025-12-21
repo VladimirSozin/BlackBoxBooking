@@ -11,7 +11,7 @@ public interface IPolicyApplicatorService
     /// <summary>
     /// Applies policies asynchronous.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result.</returns>
-    Task<Result<bool>> ApplyPoliciesAsync(Request request);
+    Task<Result<bool>> ApplyPoliciesAsync(Entities.Vacation vacation);
 }

@@ -1,4 +1,4 @@
-namespace Vacation.Core.Domain.Entities;
+namespace Vacation.Core.Domain.ValueObjects;
 
 /// <summary>
 /// Represents the type of request.

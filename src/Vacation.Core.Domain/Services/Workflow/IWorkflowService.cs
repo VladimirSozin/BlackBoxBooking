@@ -18,15 +18,15 @@ public interface IWorkflowService
     /// <summary>
     /// Runs the workflow asynchronously.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result.</returns>
-    Task<Result<bool>> RunAsync(Request request);
+    Task<Result<bool>> RunAsync(Entities.Vacation vacation);
 
     /// <summary>
     /// Saves the step asynchronously.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <param name="stepTitle">The step title.</param>
     /// <returns>The result.</returns>
-    Task<Result<bool>> SaveStepAsync(Request request, string stepTitle);
+    Task<Result<bool>> SaveStepAsync(Entities.Vacation vacation, string stepTitle);
 }

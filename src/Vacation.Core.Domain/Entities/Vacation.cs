@@ -5,7 +5,7 @@ namespace Vacation.Core.Domain.Entities;
 /// <summary>
 /// Represents a vacation request.
 /// </summary>
-public class Request
+public class Vacation
 {
     /// <summary>
     /// Gets or sets the request ID.

@@ -20,9 +20,9 @@ public class SendingEmailToBossStep : IWorkflowStep
     /// <summary>
     /// Runs the step for the request.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="vacation">The request.</param>
     /// <returns>The result.</returns>
-    public Result<bool> RunStep(Request request)
+    public Result<bool> RunStep(Entities.Vacation vacation)
     {
         return new Result<bool>() { Data = true };
     }

@@ -3,7 +3,7 @@ namespace Vacation.Core.Domain.Entities;
 /// <summary>
 /// Represents the history of employee vacations.
 /// </summary>
-public class HistoryOfVacation
+public class EmployeeVacation
 {
     /// <summary>
     /// Gets or sets the employee ID.
