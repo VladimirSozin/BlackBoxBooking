@@ -90,7 +90,7 @@ CREATE TABLE public.orders (
             Console.WriteLine($"Error creating orders table: {e.Message}, stacktrace : {e.StackTrace}");
         }
     }
-    
+
     public static void CreateOrderDetailsTable()
     {
         using var connection = new NpgsqlConnection(Program.ConnectionString);
