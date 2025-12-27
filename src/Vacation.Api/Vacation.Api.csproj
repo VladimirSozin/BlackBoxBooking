@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Vacation.Core.Application\Vacation.Core.Application.csproj" />
+      <ProjectReference Include="..\Vacation.Core.Auth\Vacation.Core.Auth.csproj" />
   </ItemGroup>
 
 </Project>
