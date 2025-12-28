@@ -31,13 +31,12 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
         Result<bool> authResult = await _userService.Auth(loginDto.Username, loginDto.Password);
-        if (authResult.IsSuccess)
+        if (authResult.IsSuccess) 
         {
             var (accessToken, refreshToken) =
                 GenerateTokens(loginDto.Username, HttpContext.Connection.RemoteIpAddress?.ToString() ?? string.Empty);
             return Ok(new { AccessToken = accessToken, RefreshToken = refreshToken });
         }
-
         return Unauthorized(authResult.GetErrorsString());
     }
 
@@ -71,7 +70,7 @@ public class AuthController : ControllerBase
                 new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, "user")
             }),
-            Expires = DateTime.UtcNow.AddHours(72), // 15 минут
+            Expires = DateTime.UtcNow.AddHours(72),
             Issuer = _configuration["Jwt:Issuer"],
             Audience = _configuration["Jwt:Audience"],
             SigningCredentials =

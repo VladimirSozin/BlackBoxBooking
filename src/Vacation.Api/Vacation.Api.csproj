@@ -15,6 +15,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Vacation.Core.Application\Vacation.Core.Application.csproj" />
       <ProjectReference Include="..\Vacation.Core.Auth\Vacation.Core.Auth.csproj" />
+      <ProjectReference Include="..\Vacation.Infrastructure\Vacation.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.Development.json" />
+    <None Include="appsettings.json" />
   </ItemGroup>
 
 </Project>
