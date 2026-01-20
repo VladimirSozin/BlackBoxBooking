@@ -1,0 +1,148 @@
+
+Роли проекта:
+1. Администратор - заполнение справочников:
+  - отделы;
+  - сотрудники, привязки сотрудников к отделам;
+  - политики и ограничения компании;
+  - остатки не использованных отпусков на определенную дату.
+
+2. Руководитель - согласование / отклонение заявок на отпуск.
+  (создание заявок и изменение статусов заявок)
+
+3. Сотрудник - создание заявок на отпуск.
+  (два статуса - черновик, на рассмотрении)
+
+-----------------------------------------------------------------------
+
+Описание интерфейсной части:
+
+
+
+-----------------------------------------------------------------------
+
+Структура базы данных:
+
+1. Departments (отделы - древовидная структура)
+ - ID отдела
+ - ID родительского отдела
+ - Наименование
+ - ID руководителя
+
+2. Employees (сотрудники)
+ - ID (идентификатор сотрудника)
+  Личные данные:
+ - ФИО
+ - Дата рождения
+ - Пол
+
+3. (отдел - сотрудник)
+ - ID отдела
+ - ID сотрудника
+ - ID типа отпуска
+
+4. (должности) ???
+
+5. TypesHolidays (типы отпусков)
+ - ID Типа отпуска
+ - Name (наименование типа отпуска)
+ - ChangesBalance (изменяет остаток)
+
+6. Balance (остатки отпусков)
+ - дата начала периода
+ - ID сотрудника
+ - ID отдела
+ - Count (количество)
+
+7. Requests (заявки на отпуск)
+ - ID заявки
+ - статус
+ - номер заявки ???
+ - дата создания
+ - ID сотрудника
+ - ID отдела
+ - комментарий
+
+8. RequestLines (строки отпусков)
+ - ID заявки
+ - номер строки
+ - дата начала
+ - дата окончания
+ - ID типа отпуска
+
+9. RegisteredVacation (уход в отпуск)
+ - дата создания
+ - ID сотрудника
+ - ID отдела
+ - ID типа отпуска
+ - комментарий
+
+-----------------------------------------------------------------------
+
+Скрипты создания таблиц:
+
+-- Отделы
+CREATE TABLE Departments (
+    ID serial NOT NULL UNIQUE PRIMARY KEY,
+    GroupID serial,
+    Name varchar(100) NOT NULL DEFAULT '',
+    ManagerID serial
+);
+
+-- Сотрудники
+CREATE TABLE Employees (
+    ID serial NOT NULL UNIQUE PRIMARY KEY,
+    Name varchar(100) NOT NULL DEFAULT '',
+    DateOfBirth date NOT NULL DEFAULT CURRENT_DATE,
+    Gender BOOLEAN DEFAULT TRUE        -- TRUE - male, FALSE - female
+);
+
+-- Отдел - Сотрудник
+CREATE TABLE Departments_Employees (
+    DepartmentID serial NOT NULL,
+    EmployeeID serial NOT NULL,
+    TypeHolidayID serial NOT NULL
+);
+
+-- Типы отпусков
+CREATE TABLE TypesHolidays (
+    ID serial NOT NULL UNIQUE PRIMARY KEY,
+    Name varchar(100) NOT NULL DEFAULT '',
+    ChangesBalance BOOLEAN DEFAULT FALSE
+);
+
+-- Остатки отпусков
+CREATE TABLE Balance (
+    Period date NOT NULL DEFAULT CURRENT_DATE,
+    EmployeeID serial NOT NULL UNIQUE,
+    ID serial NOT NULL UNIQUE,
+    Count numeric(12, 2) DEFAULT 0
+);
+
+-- Заявки на отпуск
+CREATE TABLE Requests (
+    ID serial NOT NULL UNIQUE PRIMARY KEY,
+    State numeric(1) DEFAULT 0,        -- 0 - черновик, 1 - на рассмотрении, 2 - согласован, 3 - отклонен
+    Date date NOT NULL DEFAULT CURRENT_DATE,
+    EmployeeID serial NOT NULL,
+    DepartmentID serial NOT NULL,
+    Comment varchar(200) NOT NULL DEFAULT ''
+);
+
+-- Строки отпусков
+CREATE TABLE RequestLines (
+    RequestID serial NOT NULL,
+    LineNumber smallserial NOT NULL UNIQUE,
+    StartDate date NOT NULL DEFAULT CURRENT_DATE,
+    EndDate date NOT NULL DEFAULT CURRENT_DATE,
+    TypeHolidayID serial NOT NULL
+);
+
+-- Уход в отпуск
+CREATE TABLE RegisteredVacation (
+    Date date NOT NULL DEFAULT CURRENT_DATE,
+    EmployeeID serial NOT NULL,
+    DepartmentID serial NOT NULL,
+    TypeHolidayID serial NOT NULL,
+    Comment varchar(200) NOT NULL DEFAULT ''
+);
+
