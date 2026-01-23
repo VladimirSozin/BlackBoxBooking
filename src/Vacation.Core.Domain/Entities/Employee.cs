@@ -9,6 +9,10 @@ public class Employee
     /// Gets or sets the employee ID.
     /// </summary>
     public int Id  { get; set; }
+    
+    public string Username  { get; set; }
+    
+    public string Password  { get; set; }
 
     /// <summary>
     /// Gets or sets the first name.
