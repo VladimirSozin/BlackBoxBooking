@@ -16,6 +16,11 @@ erDiagram
     Users {
         SERIAL ID PK "Идентификатор"
         VARCHAR Username "Логин"
+        VARCHAR FirstName "Имя"
+        VARCHAR LastName "Фамилия"
+        VARCHAR MiddleName "Отчество"
+        VARCHAR Phone "Телефон"
+        DATE DateOfBirth "Дата рождения"
         VARCHAR Email "Электронная почта"
         INTEGER RoleID FK "Роль"
         INTEGER EmployeeID FK "Привязка к сотруднику 
@@ -33,14 +38,7 @@ erDiagram
     
     Employees {
         SERIAL ID PK "Идентификатор"
-        VARCHAR FirstName "Имя"
-        VARCHAR LastName "Фамилия"
-        VARCHAR MiddleName "Отчество"
-        VARCHAR Email "Корпоративная почта"
-        VARCHAR Phone "Телефон"
-        DATE DateOfBirth "Дата рождения"
         DATE HireDate "Дата приема на работу"
-        INTEGER PositionID FK "Должность"
         BOOLEAN IsActive "Активен ли в компании"
     }
     
