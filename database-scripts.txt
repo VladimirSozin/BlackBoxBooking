@@ -1,0 +1,187 @@
+-- Таблица ролей
+CREATE TABLE Roles (
+    ID SERIAL PRIMARY KEY,
+    Code VARCHAR(20) NOT NULL UNIQUE, -- Код (ADMIN, MANAGER, EMPLOYEE, HR и др.)
+    Name VARCHAR(100) NOT NULL,
+    Description TEXT
+);
+
+-- Таблица должностей
+CREATE TABLE Positions (
+    ID SERIAL PRIMARY KEY,
+    Code VARCHAR(20) NOT NULL UNIQUE,
+    Name VARCHAR(100) NOT NULL,
+    Description TEXT
+);
+
+-- Таблица сотрудников
+CREATE TABLE Employees (
+    ID SERIAL PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    MiddleName VARCHAR(50),
+    Email VARCHAR(100) UNIQUE,
+    Phone VARCHAR(20),
+    DateOfBirth DATE NOT NULL,
+    HireDate DATE NOT NULL DEFAULT CURRENT_DATE,
+    PositionID INTEGER REFERENCES Positions(ID),
+    IsActive BOOLEAN DEFAULT TRUE
+);
+
+-- Таблица отделов (древовидная структура)
+CREATE TABLE Departments (
+    ID SERIAL PRIMARY KEY,
+    ParentID INTEGER NULL REFERENCES Departments(ID),
+    Code VARCHAR(20) NOT NULL UNIQUE,
+    Name VARCHAR(100) NOT NULL,
+    ManagerID INTEGER NULL REFERENCES Employees(ID)
+);
+
+-- Таблица пользователей системы
+CREATE TABLE Users (
+    ID SERIAL PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    Email VARCHAR(100) UNIQUE,
+    RoleID INTEGER NOT NULL REFERENCES Roles(ID),
+    EmployeeID INTEGER UNIQUE NULL REFERENCES Employees(ID), -- Привязка к сотруднику (если является сотрудником)
+    IsActive BOOLEAN DEFAULT TRUE,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Таблица привязки сотрудников к отделу
+CREATE TABLE EmployeeDepartments (
+    ID SERIAL PRIMARY KEY,
+    EmployeeID INTEGER NOT NULL REFERENCES Employees(ID),
+    DepartmentID INTEGER NOT NULL REFERENCES Departments(ID),
+    PositionID INTEGER NOT NULL REFERENCES Positions(ID),
+    StartDate DATE NOT NULL DEFAULT CURRENT_DATE,
+    EndDate DATE NULL,
+    IsPrimary BOOLEAN DEFAULT TRUE,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Таблица типов отпусков
+CREATE TABLE LeaveTypes (
+    ID SERIAL PRIMARY KEY,
+    Code VARCHAR(20) NOT NULL UNIQUE, 
+    Name VARCHAR(100) NOT NULL,
+    IsPaid BOOLEAN DEFAULT TRUE,
+    AffectsBalance BOOLEAN DEFAULT TRUE, -- Влияет ли на баланс отпускных дней
+    Description TEXT
+);
+
+-- Шаблоны процессов согласования
+CREATE TABLE ApprovalTemplates (
+    ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Code VARCHAR(50) NOT NULL UNIQUE,
+    Description TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CreatedBy INTEGER NOT NULL REFERENCES Users(ID)
+);
+
+-- Этапы согласования с привязкой к шаблону
+CREATE TABLE ApprovalStages (
+    ID SERIAL PRIMARY KEY,
+    TemplateID INTEGER NOT NULL REFERENCES ApprovalTemplates(ID) ON DELETE CASCADE,
+    StageNumber INTEGER NOT NULL,
+    RoleID INTEGER NOT NULL REFERENCES Roles(ID),
+    StageName VARCHAR(100) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Заявки на отпуск 
+CREATE TABLE Requests (
+    ID SERIAL PRIMARY KEY,
+    RequestNumber VARCHAR(20) GENERATED ALWAYS AS (
+        'REQ-' || EXTRACT(YEAR FROM CreatedAt) || '-' || LPAD(ID::TEXT, 6, '0')
+    ) STORED,
+    OperationType VARCHAR(20) NOT NULL, -- Тип операции: PLAN_YEAR, NEW_LEAVE, RESCHEDULE, CANCEL
+    Status VARCHAR(20) DEFAULT 'DRAFT', -- Статус: DRAFT, PENDING_MANAGER, PENDING_HR, APPROVED, REJECTED, SENT_BACK
+    EmployeeID INTEGER NOT NULL REFERENCES Employees(ID),
+    DepartmentID INTEGER NOT NULL REFERENCES Departments(ID),
+    TargetLeaveID INTEGER NULL REFERENCES Leaves(ID), -- Целевой отпуск (при переносе или отмене)
+    Comment TEXT,
+    TemplateID INTEGER NULL REFERENCES ApprovalTemplates(ID),
+    CurrentStage INTEGER DEFAULT 0,
+    CreatedBy INTEGER NOT NULL REFERENCES Users(ID),
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Отпуска (фактические и запланированные)
+CREATE TABLE Leaves (
+    ID SERIAL PRIMARY KEY,
+    EmployeeID INTEGER NOT NULL REFERENCES Employees(ID),
+    LeaveTypeID INTEGER NOT NULL REFERENCES LeaveTypes(ID),
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    DurationDays DECIMAL(4,1) NOT NULL,
+    Status VARCHAR(20) DEFAULT 'PLANNED', --Статус: PLANNED, APPROVED, USED, CANCELLED, RESCHEDULED
+    RequestID INTEGER NULL REFERENCES Requests(ID),
+    PreviousLeaveID INTEGER NULL REFERENCES Leaves(ID), -- Предыдущая версия (при переносе)
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- История согласования
+CREATE TABLE ApprovalHistory (
+    ID SERIAL PRIMARY KEY,
+    RequestID INTEGER NOT NULL REFERENCES Requests(ID) ON DELETE CASCADE,
+    StageNumber INTEGER NOT NULL,
+    ApproverID INTEGER NOT NULL REFERENCES Users(ID),
+    Decision VARCHAR(20) NOT NULL, -- Решение: APPROVED, REJECTED, SENT_BACK
+    DecisionDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Comment TEXT,
+    NextStage INTEGER NULL
+);
+
+-- Баланс отпускных дней
+CREATE TABLE LeaveBalances (
+    ID SERIAL PRIMARY KEY,
+    EmployeeID INTEGER NOT NULL REFERENCES Employees(ID),
+    LeaveTypeID INTEGER NOT NULL REFERENCES LeaveTypes(ID),
+    Year INTEGER NOT NULL,
+    CurrentBalance DECIMAL(5,1) DEFAULT 0
+);
+
+-- Транзакции по балансу
+CREATE TABLE BalanceTransactions (
+    ID SERIAL PRIMARY KEY,
+    EmployeeID INTEGER NOT NULL REFERENCES Employees(ID),
+    LeaveTypeID INTEGER NOT NULL REFERENCES LeaveTypes(ID),
+    TransactionDate DATE NOT NULL DEFAULT CURRENT_DATE,
+    TransactionType VARCHAR(20) NOT NULL, -- Тип операции: EARN, USE, RETURN, MANUAL
+    Amount DECIMAL(5,1) NOT NULL,
+    LeaveID INTEGER NULL REFERENCES Leaves(ID),
+    RequestID INTEGER NULL REFERENCES Requests(ID),
+    Description TEXT,
+    CreatedBy INTEGER NOT NULL REFERENCES Users(ID),
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Индексы
+-- Индексы для ускорения поиска
+CREATE INDEX idx_employees_email ON Employees(Email);
+CREATE INDEX idx_employees_active ON Employees(IsActive) WHERE IsActive = TRUE;
+
+CREATE INDEX idx_users_employee ON Users(EmployeeID) WHERE EmployeeID IS NOT NULL;
+
+CREATE INDEX idx_empdept_employee ON EmployeeDepartments(EmployeeID);
+CREATE INDEX idx_empdept_department ON EmployeeDepartments(DepartmentID);
+CREATE INDEX idx_empdept_current ON EmployeeDepartments(EmployeeID) WHERE EndDate IS NULL;
+
+CREATE INDEX idx_requests_status ON Requests(Status);
+CREATE INDEX idx_requests_employee ON Requests(EmployeeID);
+CREATE INDEX idx_requests_created ON Requests(CreatedAt);
+CREATE INDEX idx_requests_type ON Requests(OperationType);
+
+CREATE INDEX idx_leaves_dates ON Leaves(StartDate, EndDate);
+CREATE INDEX idx_leaves_employee_status ON Leaves(EmployeeID, Status);
+CREATE INDEX idx_leaves_request ON Leaves(RequestID) WHERE RequestID IS NOT NULL;
+
+CREATE INDEX idx_approval_history_request ON ApprovalHistory(RequestID);
+
+CREATE INDEX idx_balance_employee_year ON LeaveBalances(EmployeeID, Year);
