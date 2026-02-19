@@ -1,0 +1,11 @@
+using BlackBoxBoard.Server.Domain.Common;
+
+namespace BlackBoxBoard.Server.Domain.ValueObjects;
+
+public class EmployeeName 
+{
+    public string LastName { get; }
+    public string FirstName { get; }
+    public string? MiddleName { get; }
+
+}
