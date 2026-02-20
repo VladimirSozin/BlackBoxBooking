@@ -8,24 +8,28 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production  
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__PostgresConnection=${ConnectionStrings__PostgresConnection}
     networks:
-      - coolify 
+      - coolify
     volumes:
       - app_data:/app/data
 
   frontend:
-    build: ./blackboxboard.client
+    build:
+      context: ./blackboxboard.client
+      dockerfile: Dockerfile
+      args:  
     ports:
       - "3000:80"
     depends_on:
       - backend
     networks:
-      - coolify  
+      - coolify
 
 networks:
   coolify:
-    external: true 
+    external: true
 
 volumes:
   app_data:
