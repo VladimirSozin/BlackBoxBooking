@@ -1,9 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["BlackBoxBoard.Server.csproj", "."]
-RUN dotnet restore
+
+COPY BlackBoxBoard.Server.csproj .
+RUN dotnet restore BlackBoxBoard.Server.csproj
+
 COPY . .
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish BlackBoxBoard.Server.csproj -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
