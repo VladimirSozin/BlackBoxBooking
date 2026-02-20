@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./BlackBoxBoard.Server
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - app_data:/app/data
+
+  frontend:
+    build: ./BlackBoxBoard.client
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  app_data:

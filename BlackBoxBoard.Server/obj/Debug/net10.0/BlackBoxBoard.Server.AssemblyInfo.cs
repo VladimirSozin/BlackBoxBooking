@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlackBoxBoard.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+998a1c2a0a09f8ff146bd09a47ebaa8aa3af15a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+346229dca7153ebe2037fa84abbfbfcfcb7e8246")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlackBoxBoard.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlackBoxBoard.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
