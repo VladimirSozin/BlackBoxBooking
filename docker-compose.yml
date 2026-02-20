@@ -19,7 +19,6 @@ services:
     build:
       context: ./blackboxboard.client
       dockerfile: Dockerfile
-      args:  
     ports:
       - "3000:80"
     depends_on:
