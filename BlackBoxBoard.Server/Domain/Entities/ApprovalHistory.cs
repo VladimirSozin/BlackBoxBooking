@@ -6,7 +6,6 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class ApprovalHistory : BaseEntity
 {
     private ApprovalHistory() { }
-
     public ApprovalHistory(int requestId, int stageNumber, int approverId,
         int decisionId, string? comment, int? nextStageNumber, int createdBy) : base(createdBy)
     {
@@ -27,7 +26,7 @@ public class ApprovalHistory : BaseEntity
     public string? Comment { get; private set; }
     public int? NextStageNumber { get; private set; }
 
-    // Navigation properties
+    // Navigation 
     public virtual Request Request { get; private set; } = null!;
     public virtual User Approver { get; private set; } = null!;
     public virtual DecisionType Decision { get; private set; } = null!;

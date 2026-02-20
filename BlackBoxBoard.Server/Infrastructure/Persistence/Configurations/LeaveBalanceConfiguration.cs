@@ -44,7 +44,7 @@ public class LeaveBalanceConfiguration : IEntityTypeConfiguration<LeaveBalance>
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.LeaveType)
-            .WithMany(x => x.LeaveBalances)
+            .WithMany()
             .HasForeignKey(x => x.LeaveTypeId)
             .OnDelete(DeleteBehavior.Restrict);
     }

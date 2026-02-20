@@ -5,7 +5,6 @@ using BlackBoxBoard.Server.Domain.References;
 public class ApprovalStage : BaseEntity
 {
     private ApprovalStage() { }
-
     public ApprovalStage(int templateId, int stageNumber, int? roleId, int? departmentId,
         int? positionId, string? stageName, int? timeoutHours, bool isRequired, int createdBy)
         : base(createdBy)
@@ -28,6 +27,8 @@ public class ApprovalStage : BaseEntity
     public string? StageName { get; private set; }
     public int? TimeoutHours { get; private set; }
     public bool IsRequired { get; private set; }
+
+    // Navigation
     public virtual ApprovalTemplate Template { get; private set; } = null!;
     public virtual Role? Role { get; private set; }
     public virtual Department? Department { get; private set; }

@@ -6,7 +6,6 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class LeaveBalance : BaseEntity
 {
     private LeaveBalance() { }
-
     public LeaveBalance(int employeeId, int leaveTypeId, int year, int createdBy) : base(createdBy)
     {
         EmployeeId = employeeId;
@@ -21,9 +20,10 @@ public class LeaveBalance : BaseEntity
     public decimal Entitled { get; private set; }
     public decimal Used { get; private set; }
     public decimal Planned { get; private set; }
+    public decimal Available => Entitled - Used - Planned;
     public DateTime CalculatedAt { get; private set; }
 
-    // Navigation properties
+    // Navigation
     public virtual Employee Employee { get; private set; } = null!;
     public virtual LeaveType LeaveType { get; private set; } = null!;
 }

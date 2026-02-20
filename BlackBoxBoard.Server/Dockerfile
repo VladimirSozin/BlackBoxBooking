@@ -11,4 +11,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /app .
 EXPOSE 5000
-ENTRYPOINT ["dotnet", "BlackBoxBoard.Server.dll"]
+
+ENTRYPOINT ["sh", "-c", "dotnet BlackBoxBoard.Server.dll --migrate-database && dotnet BlackBoxBoard.Server.dll"]

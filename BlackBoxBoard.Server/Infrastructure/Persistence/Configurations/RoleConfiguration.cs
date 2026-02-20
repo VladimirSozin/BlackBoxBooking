@@ -20,10 +20,6 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
             .IsRequired()
             .HasMaxLength(100);
 
-        builder.Property(x => x.Priority)
-            .IsRequired()
-            .HasDefaultValue(0);
-
         builder.Property(x => x.SortOrder)
             .IsRequired()
             .HasDefaultValue(0);

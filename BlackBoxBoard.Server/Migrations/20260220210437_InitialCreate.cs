@@ -20,12 +20,14 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,11 +44,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     IsFinal = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,11 +66,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -87,11 +93,13 @@ namespace BlackBoxBoard.Server.Migrations
                     MaxDays = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 28),
                     AccrualRate = table.Column<decimal>(type: "TEXT", precision: 5, scale: 2, nullable: true),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -107,11 +115,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -127,11 +137,14 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Grade = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,11 +160,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -166,13 +181,15 @@ namespace BlackBoxBoard.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Priority = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -189,11 +206,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Sign = table.Column<string>(type: "TEXT", maxLength: 1, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -207,18 +226,18 @@ namespace BlackBoxBoard.Server.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     EmployeeNumber = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    MiddleName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
                     HireDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TerminationDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    PositionId = table.Column<int>(type: "INTEGER", nullable: true),
                     ManagerId = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    HasUserAccount = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PositionId = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -233,8 +252,7 @@ namespace BlackBoxBoard.Server.Migrations
                         name: "FK_Employees_Positions_PositionId",
                         column: x => x.PositionId,
                         principalTable: "Positions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -247,11 +265,13 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     ManagerId = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -285,8 +305,11 @@ namespace BlackBoxBoard.Server.Migrations
                     CalculatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -313,17 +336,22 @@ namespace BlackBoxBoard.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    MiddleName = table.Column<string>(type: "TEXT", nullable: true),
                     Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: true),
                     RoleId = table.Column<int>(type: "INTEGER", nullable: false),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsEmployee = table.Column<bool>(type: "INTEGER", nullable: false),
                     LastLoginAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -358,8 +386,11 @@ namespace BlackBoxBoard.Server.Migrations
                     IsRequired = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -403,11 +434,13 @@ namespace BlackBoxBoard.Server.Migrations
                     EndDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     IsPrimary = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: false),
                     FTE = table.Column<decimal>(type: "TEXT", precision: 3, scale: 2, nullable: false, defaultValue: 1.0m),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -433,6 +466,65 @@ namespace BlackBoxBoard.Server.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RequestNumber = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    OperationTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    StatusId = table.Column<int>(type: "INTEGER", nullable: false),
+                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DepartmentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ApprovalTemplateId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Comment = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: true),
+                    CurrentStageNumber = table.Column<int>(type: "INTEGER", nullable: true),
+                    SubmittedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CompletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Requests_ApprovalTemplates_ApprovalTemplateId",
+                        column: x => x.ApprovalTemplateId,
+                        principalTable: "ApprovalTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Requests_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Requests_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Requests_OperationTypes_OperationTypeId",
+                        column: x => x.OperationTypeId,
+                        principalTable: "OperationTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Requests_RequestStatuses_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "RequestStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ApprovalHistories",
                 columns: table => new
                 {
@@ -447,8 +539,11 @@ namespace BlackBoxBoard.Server.Migrations
                     NextStageNumber = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -460,59 +555,17 @@ namespace BlackBoxBoard.Server.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+                        name: "FK_ApprovalHistories_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_ApprovalHistories_Users_ApproverId",
                         column: x => x.ApproverId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BalanceTransactions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    LeaveTypeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TransactionTypeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Amount = table.Column<decimal>(type: "TEXT", precision: 5, scale: 1, nullable: false),
-                    LeaveId = table.Column<int>(type: "INTEGER", nullable: true),
-                    RequestId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
-                    CreatorId = table.Column<int>(type: "INTEGER", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BalanceTransactions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BalanceTransactions_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BalanceTransactions_LeaveTypes_LeaveTypeId",
-                        column: x => x.LeaveTypeId,
-                        principalTable: "LeaveTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BalanceTransactions_TransactionTypes_TransactionTypeId",
-                        column: x => x.TransactionTypeId,
-                        principalTable: "TransactionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_BalanceTransactions_Users_CreatorId",
-                        column: x => x.CreatorId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -532,8 +585,11 @@ namespace BlackBoxBoard.Server.Migrations
                     Comment = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -562,69 +618,74 @@ namespace BlackBoxBoard.Server.Migrations
                         principalTable: "Leaves",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Leaves_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Requests",
+                name: "BalanceTransactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RequestNumber = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    OperationTypeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StatusId = table.Column<int>(type: "INTEGER", nullable: false),
                     EmployeeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DepartmentId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ApprovalTemplateId = table.Column<int>(type: "INTEGER", nullable: false),
-                    TargetLeaveId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Comment = table.Column<string>(type: "TEXT", maxLength: 1000, nullable: true),
-                    CurrentStageNumber = table.Column<int>(type: "INTEGER", nullable: true),
-                    SubmittedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CompletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    LeaveTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TransactionTypeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Amount = table.Column<decimal>(type: "TEXT", precision: 5, scale: 1, nullable: false),
+                    LeaveId = table.Column<int>(type: "INTEGER", nullable: true),
+                    RequestId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true)
+                    CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Requests", x => x.Id);
+                    table.PrimaryKey("PK_BalanceTransactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Requests_ApprovalTemplates_ApprovalTemplateId",
-                        column: x => x.ApprovalTemplateId,
-                        principalTable: "ApprovalTemplates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Requests_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Requests_Employees_EmployeeId",
+                        name: "FK_BalanceTransactions_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Requests_Leaves_TargetLeaveId",
-                        column: x => x.TargetLeaveId,
+                        name: "FK_BalanceTransactions_LeaveTypes_LeaveTypeId",
+                        column: x => x.LeaveTypeId,
+                        principalTable: "LeaveTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_BalanceTransactions_Leaves_LeaveId",
+                        column: x => x.LeaveId,
                         principalTable: "Leaves",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Requests_OperationTypes_OperationTypeId",
-                        column: x => x.OperationTypeId,
-                        principalTable: "OperationTypes",
+                        name: "FK_BalanceTransactions_Requests_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "Requests",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_BalanceTransactions_TransactionTypes_TransactionTypeId",
+                        column: x => x.TransactionTypeId,
+                        principalTable: "TransactionTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Requests_RequestStatuses_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "RequestStatuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_BalanceTransactions_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -669,11 +730,6 @@ namespace BlackBoxBoard.Server.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_CreatorId",
-                table: "BalanceTransactions",
-                column: "CreatorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_BalanceTransactions_EmployeeId",
                 table: "BalanceTransactions",
                 column: "EmployeeId");
@@ -699,6 +755,11 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "TransactionTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BalanceTransactions_UserId",
+                table: "BalanceTransactions",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DecisionTypes_Code",
                 table: "DecisionTypes",
                 column: "Code",
@@ -721,6 +782,21 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeeDepartment_Employee_Department_Primary",
+                table: "EmployeeDepartments",
+                columns: new[] { "EmployeeId", "DepartmentId", "IsPrimary" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeDepartment_IsActive",
+                table: "EmployeeDepartments",
+                column: "IsActive");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeDepartment_StartDate",
+                table: "EmployeeDepartments",
+                column: "StartDate");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeDepartments_DepartmentId",
                 table: "EmployeeDepartments",
                 column: "DepartmentId");
@@ -737,13 +813,18 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_EmployeeNumber",
+                name: "IX_Employee_EmployeeNumber",
                 table: "Employees",
                 column: "EmployeeNumber",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_ManagerId",
+                name: "IX_Employee_IsActive",
+                table: "Employees",
+                column: "IsActive");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employee_ManagerId",
                 table: "Employees",
                 column: "ManagerId");
 
@@ -813,6 +894,27 @@ namespace BlackBoxBoard.Server.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Request_EmployeeId",
+                table: "Requests",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Request_EmployeeId_CreatedAt",
+                table: "Requests",
+                columns: new[] { "EmployeeId", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Request_RequestNumber",
+                table: "Requests",
+                column: "RequestNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Request_StatusId",
+                table: "Requests",
+                column: "StatusId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Requests_ApprovalTemplateId",
                 table: "Requests",
                 column: "ApprovalTemplateId");
@@ -823,30 +925,9 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_EmployeeId",
-                table: "Requests",
-                column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Requests_OperationTypeId",
                 table: "Requests",
                 column: "OperationTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_RequestNumber",
-                table: "Requests",
-                column: "RequestNumber",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_StatusId",
-                table: "Requests",
-                column: "StatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_TargetLeaveId",
-                table: "Requests",
-                column: "TargetLeaveId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RequestStatuses_Code",
@@ -867,61 +948,39 @@ namespace BlackBoxBoard.Server.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_EmployeeId",
+                name: "IX_User_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_EmployeeId",
+                table: "Users",
+                column: "EmployeeId",
+                unique: true,
+                filter: "[EmployeeId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_EmployeeId_Unique",
                 table: "Users",
                 column: "EmployeeId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_RoleId",
+                name: "IX_User_RoleId",
                 table: "Users",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Username",
+                name: "IX_User_Username",
                 table: "Users",
                 column: "Username",
                 unique: true);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_ApprovalHistories_Requests_RequestId",
-                table: "ApprovalHistories",
-                column: "RequestId",
-                principalTable: "Requests",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BalanceTransactions_Leaves_LeaveId",
-                table: "BalanceTransactions",
-                column: "LeaveId",
-                principalTable: "Leaves",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_BalanceTransactions_Requests_RequestId",
-                table: "BalanceTransactions",
-                column: "RequestId",
-                principalTable: "Requests",
-                principalColumn: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Leaves_Requests_RequestId",
-                table: "Leaves",
-                column: "RequestId",
-                principalTable: "Requests",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Leaves_Requests_RequestId",
-                table: "Leaves");
-
             migrationBuilder.DropTable(
                 name: "ApprovalHistories");
 
@@ -941,25 +1000,31 @@ namespace BlackBoxBoard.Server.Migrations
                 name: "DecisionTypes");
 
             migrationBuilder.DropTable(
+                name: "Leaves");
+
+            migrationBuilder.DropTable(
                 name: "TransactionTypes");
 
             migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "LeaveStatuses");
+
+            migrationBuilder.DropTable(
+                name: "LeaveTypes");
 
             migrationBuilder.DropTable(
                 name: "Requests");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "ApprovalTemplates");
 
             migrationBuilder.DropTable(
                 name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "Leaves");
 
             migrationBuilder.DropTable(
                 name: "OperationTypes");
@@ -969,12 +1034,6 @@ namespace BlackBoxBoard.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
-
-            migrationBuilder.DropTable(
-                name: "LeaveStatuses");
-
-            migrationBuilder.DropTable(
-                name: "LeaveTypes");
 
             migrationBuilder.DropTable(
                 name: "Positions");

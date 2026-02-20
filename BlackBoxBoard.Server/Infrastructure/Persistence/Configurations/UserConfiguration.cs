@@ -36,6 +36,22 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasIndex(x => x.Username)
             .IsUnique();
 
+        builder.HasIndex(u => u.Username)
+            .IsUnique()
+            .HasDatabaseName("IX_User_Username");
+
+        builder.HasIndex(u => u.Email)
+            .IsUnique()
+            .HasDatabaseName("IX_User_Email");
+
+        builder.HasIndex(u => u.RoleId)
+            .HasDatabaseName("IX_User_RoleId");
+
+        builder.HasIndex(u => u.EmployeeId)
+            .IsUnique()
+            .HasDatabaseName("IX_User_EmployeeId")
+            .HasFilter("[EmployeeId] IS NOT NULL");
+
         // Relationships
         builder.HasOne(x => x.Role)
             .WithMany(x => x.Users)

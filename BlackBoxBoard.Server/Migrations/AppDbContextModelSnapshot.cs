@@ -26,10 +26,19 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("DepartmentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsRequired")
@@ -91,13 +100,22 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DecisionDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("DecisionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("NextStageNumber")
@@ -139,10 +157,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CreatorId")
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -150,6 +171,9 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("LeaveId")
@@ -173,9 +197,10 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<int?>("UpdatedBy")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("CreatorId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
@@ -186,6 +211,8 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasIndex("RequestId");
 
                     b.HasIndex("TransactionTypeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("BalanceTransactions", (string)null);
                 });
@@ -204,7 +231,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -250,7 +283,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("EmployeeNumber")
@@ -258,9 +297,8 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("HasUserAccount")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("TEXT");
@@ -270,16 +308,8 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER")
                         .HasDefaultValue(true);
 
-                    b.Property<string>("LastName")
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
                     b.Property<int?>("ManagerId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("MiddleName")
-                        .HasMaxLength(100)
-                        .HasColumnType("TEXT");
 
                     b.Property<int?>("PositionId")
                         .HasColumnType("INTEGER");
@@ -296,9 +326,14 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_Employee_EmployeeNumber");
 
-                    b.HasIndex("ManagerId");
+                    b.HasIndex("IsActive")
+                        .HasDatabaseName("IX_Employee_IsActive");
+
+                    b.HasIndex("ManagerId")
+                        .HasDatabaseName("IX_Employee_ManagerId");
 
                     b.HasIndex("PositionId");
 
@@ -314,7 +349,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DepartmentId")
@@ -358,7 +399,16 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasIndex("DepartmentId");
 
+                    b.HasIndex("IsActive")
+                        .HasDatabaseName("IX_EmployeeDepartment_IsActive");
+
                     b.HasIndex("PositionId");
+
+                    b.HasIndex("StartDate")
+                        .HasDatabaseName("IX_EmployeeDepartment_StartDate");
+
+                    b.HasIndex("EmployeeId", "DepartmentId", "IsPrimary")
+                        .HasDatabaseName("IX_EmployeeDepartment_Employee_Department_Primary");
 
                     b.HasIndex("EmployeeId", "DepartmentId", "StartDate")
                         .IsUnique();
@@ -379,7 +429,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("DurationDays")
@@ -391,6 +447,9 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("LeaveTypeId")
                         .HasColumnType("INTEGER");
@@ -440,7 +499,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EmployeeId")
@@ -451,6 +516,9 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasPrecision(5, 1)
                         .HasColumnType("TEXT")
                         .HasDefaultValue(0m);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("LeaveTypeId")
                         .HasColumnType("INTEGER");
@@ -500,8 +568,17 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("Grade")
                         .HasColumnType("INTEGER");
@@ -549,16 +626,25 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("CurrentStageNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("OperationTypeId")
@@ -575,9 +661,6 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime?>("SubmittedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TargetLeaveId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("TEXT");
 
@@ -590,16 +673,20 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .HasDatabaseName("IX_Request_EmployeeId");
 
                     b.HasIndex("OperationTypeId");
 
                     b.HasIndex("RequestNumber")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_Request_RequestNumber");
 
-                    b.HasIndex("StatusId");
+                    b.HasIndex("StatusId")
+                        .HasDatabaseName("IX_Request_StatusId");
 
-                    b.HasIndex("TargetLeaveId");
+                    b.HasIndex("EmployeeId", "CreatedAt")
+                        .HasDatabaseName("IX_Request_EmployeeId_CreatedAt");
 
                     b.ToTable("Requests", (string)null);
                 });
@@ -613,7 +700,16 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
@@ -625,6 +721,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
@@ -633,11 +730,18 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER")
                         .HasDefaultValue(true);
 
+                    b.Property<bool>("IsEmployee")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime?>("LastLoginAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MiddleName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -660,12 +764,23 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasDatabaseName("IX_User_Email");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("EmployeeId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_User_EmployeeId")
+                        .HasFilter("[EmployeeId] IS NOT NULL");
+
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("IX_User_RoleId");
 
                     b.HasIndex("Username")
+                        .IsUnique()
+                        .HasDatabaseName("IX_User_Username");
+
+                    b.HasIndex(new[] { "EmployeeId" }, "IX_User_EmployeeId_Unique")
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
@@ -685,7 +800,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -734,7 +855,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -785,7 +912,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -838,7 +971,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -897,7 +1036,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -943,7 +1088,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -989,8 +1140,17 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -1001,11 +1161,6 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Priority")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(0);
 
                     b.Property<int>("SortOrder")
                         .ValueGeneratedOnAdd()
@@ -1040,7 +1195,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("CreatedBy")
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("DeletedBy")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
@@ -1118,7 +1279,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.DecisionType", "Decision")
-                        .WithMany("ApprovalHistories")
+                        .WithMany()
                         .HasForeignKey("DecisionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1138,10 +1299,6 @@ namespace BlackBoxBoard.Server.Migrations
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.BalanceTransaction", b =>
                 {
-                    b.HasOne("BlackBoxBoard.Server.Domain.Entities.User", "Creator")
-                        .WithMany("CreatedTransactions")
-                        .HasForeignKey("CreatorId");
-
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.Employee", "Employee")
                         .WithMany("BalanceTransactions")
                         .HasForeignKey("EmployeeId")
@@ -1149,12 +1306,12 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.Leave", "Leave")
-                        .WithMany("BalanceTransactions")
+                        .WithMany()
                         .HasForeignKey("LeaveId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.LeaveType", "LeaveType")
-                        .WithMany("BalanceTransactions")
+                        .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1164,12 +1321,14 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasForeignKey("RequestId");
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.TransactionType", "TransactionType")
-                        .WithMany("BalanceTransactions")
+                        .WithMany()
                         .HasForeignKey("TransactionTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Creator");
+                    b.HasOne("BlackBoxBoard.Server.Domain.Entities.User", null)
+                        .WithMany("CreatedTransactions")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Employee");
 
@@ -1206,14 +1365,11 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasForeignKey("ManagerId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("BlackBoxBoard.Server.Domain.Entities.Position", "Position")
+                    b.HasOne("BlackBoxBoard.Server.Domain.Entities.Position", null)
                         .WithMany("Employees")
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("PositionId");
 
                     b.Navigation("Manager");
-
-                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.EmployeeDepartment", b =>
@@ -1252,7 +1408,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.LeaveType", "LeaveType")
-                        .WithMany("Leaves")
+                        .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1269,7 +1425,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.LeaveStatus", "Status")
-                        .WithMany("Leaves")
+                        .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1294,7 +1450,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.LeaveType", "LeaveType")
-                        .WithMany("LeaveBalances")
+                        .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1307,13 +1463,13 @@ namespace BlackBoxBoard.Server.Migrations
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Request", b =>
                 {
                     b.HasOne("BlackBoxBoard.Server.Domain.References.ApprovalTemplate", "ApprovalTemplate")
-                        .WithMany("Requests")
+                        .WithMany()
                         .HasForeignKey("ApprovalTemplateId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.Department", "Department")
-                        .WithMany("Requests")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1325,21 +1481,16 @@ namespace BlackBoxBoard.Server.Migrations
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.OperationType", "OperationType")
-                        .WithMany("Requests")
+                        .WithMany()
                         .HasForeignKey("OperationTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.RequestStatus", "Status")
-                        .WithMany("Requests")
+                        .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("BlackBoxBoard.Server.Domain.Entities.Leave", "TargetLeave")
-                        .WithMany()
-                        .HasForeignKey("TargetLeaveId")
-                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ApprovalTemplate");
 
@@ -1350,8 +1501,6 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Navigation("OperationType");
 
                     b.Navigation("Status");
-
-                    b.Navigation("TargetLeave");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.User", b =>
@@ -1379,8 +1528,6 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("EmployeeAssignments");
-
-                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Employee", b =>
@@ -1404,8 +1551,6 @@ namespace BlackBoxBoard.Server.Migrations
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Leave", b =>
                 {
-                    b.Navigation("BalanceTransactions");
-
                     b.Navigation("ChildLeaves");
                 });
 
@@ -1434,38 +1579,7 @@ namespace BlackBoxBoard.Server.Migrations
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.ApprovalTemplate", b =>
                 {
-                    b.Navigation("Requests");
-
                     b.Navigation("Stages");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.DecisionType", b =>
-                {
-                    b.Navigation("ApprovalHistories");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.LeaveStatus", b =>
-                {
-                    b.Navigation("Leaves");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.LeaveType", b =>
-                {
-                    b.Navigation("BalanceTransactions");
-
-                    b.Navigation("LeaveBalances");
-
-                    b.Navigation("Leaves");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.OperationType", b =>
-                {
-                    b.Navigation("Requests");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.RequestStatus", b =>
-                {
-                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.Role", b =>
@@ -1473,11 +1587,6 @@ namespace BlackBoxBoard.Server.Migrations
                     b.Navigation("ApprovalStages");
 
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.TransactionType", b =>
-                {
-                    b.Navigation("BalanceTransactions");
                 });
 #pragma warning restore 612, 618
         }

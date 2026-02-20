@@ -47,5 +47,14 @@ public class EmployeeDepartmentConfiguration : IEntityTypeConfiguration<Employee
             .WithMany(x => x.EmployeeDepartments)
             .HasForeignKey(x => x.PositionId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(ed => new { ed.EmployeeId, ed.DepartmentId, ed.IsPrimary })
+            .HasDatabaseName("IX_EmployeeDepartment_Employee_Department_Primary");
+
+        builder.HasIndex(ed => ed.StartDate)
+            .HasDatabaseName("IX_EmployeeDepartment_StartDate");
+
+        builder.HasIndex(ed => ed.IsActive)
+            .HasDatabaseName("IX_EmployeeDepartment_IsActive");
     }
 }

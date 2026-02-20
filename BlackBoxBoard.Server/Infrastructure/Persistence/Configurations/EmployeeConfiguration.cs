@@ -16,15 +16,6 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
             .IsRequired()
             .HasMaxLength(50);
 
-        builder.Property(x => x.FirstName)
-            .HasMaxLength(100);
-
-        builder.Property(x => x.LastName)
-            .HasMaxLength(100);
-
-        builder.Property(x => x.MiddleName)
-            .HasMaxLength(100);
-
         builder.Property(x => x.HireDate)
             .IsRequired();
 
@@ -32,14 +23,15 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
             .IsRequired()
             .HasDefaultValue(true);
 
-        builder.HasIndex(x => x.EmployeeNumber)
-            .IsUnique();
+        builder.HasIndex(e => e.EmployeeNumber)
+            .IsUnique()
+            .HasDatabaseName("IX_Employee_EmployeeNumber");
 
-        // Relationships
-        builder.HasOne(x => x.Position)
-            .WithMany(x => x.Employees)
-            .HasForeignKey(x => x.PositionId)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.HasIndex(e => e.ManagerId)
+            .HasDatabaseName("IX_Employee_ManagerId");
+
+        builder.HasIndex(e => e.IsActive)
+            .HasDatabaseName("IX_Employee_IsActive");
 
         builder.HasOne(x => x.Manager)
             .WithMany(x => x.Subordinates)

@@ -33,7 +33,7 @@ public class ApprovalHistoryConfiguration : IEntityTypeConfiguration<ApprovalHis
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.Decision)
-            .WithMany(x => x.ApprovalHistories)
+            .WithMany()
             .HasForeignKey(x => x.DecisionId)
             .OnDelete(DeleteBehavior.Restrict);
     }

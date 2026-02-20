@@ -1,7 +1,7 @@
 ﻿using BlackBoxBoard.Server.Domain.Entities;
 using BlackBoxBoard.Server.Domain.References;
-using BlackBoxBoard.Server.Infrastructure.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BlackBoxBoard.Server.Infrastructure.Persistence
 {
@@ -20,7 +20,6 @@ namespace BlackBoxBoard.Server.Infrastructure.Persistence
         public DbSet<ApprovalTemplate> ApprovalTemplates { get; set; }
         public DbSet<ApprovalStage> ApprovalStages { get; set; }
 
-        // Business entities
         public DbSet<User> Users { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Position> Positions { get; set; }
@@ -34,29 +33,8 @@ namespace BlackBoxBoard.Server.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
-
-            // Apply all configurations
-            modelBuilder.ApplyConfiguration(new RequestStatusConfiguration());
-            modelBuilder.ApplyConfiguration(new LeaveStatusConfiguration());
-            modelBuilder.ApplyConfiguration(new OperationTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new LeaveTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new DecisionTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new ApprovalTemplateConfiguration());
-            modelBuilder.ApplyConfiguration(new ApprovalStageConfiguration());
-
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
-            modelBuilder.ApplyConfiguration(new PositionConfiguration());
-            modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeDepartmentConfiguration());
-            modelBuilder.ApplyConfiguration(new RequestConfiguration());
-            modelBuilder.ApplyConfiguration(new LeaveConfiguration());
-            modelBuilder.ApplyConfiguration(new ApprovalHistoryConfiguration());
-            modelBuilder.ApplyConfiguration(new LeaveBalanceConfiguration());
-            modelBuilder.ApplyConfiguration(new BalanceTransactionConfiguration());
         }
     }
 }

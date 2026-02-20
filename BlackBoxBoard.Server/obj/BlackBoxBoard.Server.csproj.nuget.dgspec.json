@@ -134,6 +134,10 @@
               "target": "Package",
               "version": "[13.0.4, )"
             },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Serilog": {
               "target": "Package",
               "version": "[4.3.1, )"

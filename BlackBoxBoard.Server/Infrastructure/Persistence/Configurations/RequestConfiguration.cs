@@ -19,38 +19,42 @@ public class RequestConfiguration : IEntityTypeConfiguration<Request>
         builder.Property(x => x.Comment)
             .HasMaxLength(1000);
 
-        builder.HasIndex(x => x.RequestNumber)
-            .IsUnique();
+        builder.HasIndex(r => r.RequestNumber)
+            .IsUnique()
+            .HasDatabaseName("IX_Request_RequestNumber");
 
-        // Relationships
-        builder.HasOne(x => x.OperationType)
-            .WithMany(x => x.Requests)
-            .HasForeignKey(x => x.OperationTypeId)
+        builder.HasIndex(r => r.EmployeeId)
+            .HasDatabaseName("IX_Request_EmployeeId");
+
+        builder.HasIndex(r => r.StatusId)
+            .HasDatabaseName("IX_Request_StatusId");
+
+        builder.HasIndex(r => new { r.EmployeeId, r.CreatedAt })
+            .HasDatabaseName("IX_Request_EmployeeId_CreatedAt");
+
+        builder.HasOne(r => r.OperationType)
+            .WithMany() // НЕТ коллекции в OperationType!
+            .HasForeignKey(r => r.OperationTypeId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne(x => x.Status)
-            .WithMany(x => x.Requests)
-            .HasForeignKey(x => x.StatusId)
+        builder.HasOne(r => r.Status)
+            .WithMany() 
+            .HasForeignKey(r => r.StatusId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne(x => x.Employee)
-            .WithMany(x => x.Requests)
-            .HasForeignKey(x => x.EmployeeId)
+        builder.HasOne(r => r.Employee)
+            .WithMany(e => e.Requests) 
+            .HasForeignKey(r => r.EmployeeId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne(x => x.Department)
-            .WithMany(x => x.Requests)
-            .HasForeignKey(x => x.DepartmentId)
+        builder.HasOne(r => r.Department)
+            .WithMany() 
+            .HasForeignKey(r => r.DepartmentId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne(x => x.ApprovalTemplate)
-            .WithMany(x => x.Requests)
-            .HasForeignKey(x => x.ApprovalTemplateId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasOne(x => x.TargetLeave)
-            .WithMany()
-            .HasForeignKey(x => x.TargetLeaveId)
+        builder.HasOne(r => r.ApprovalTemplate)
+            .WithMany() 
+            .HasForeignKey(r => r.ApprovalTemplateId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

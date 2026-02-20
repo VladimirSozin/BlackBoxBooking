@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\applicationdbcontextseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\applicationdbcontextseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SwaggerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\API\\Extensions\\SwaggerExtensions.cs",
+              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\API\\Extensions\\SwaggerExtensions.cs",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\API\\Extensions\\SwaggerExtensions.cs",
+              "RelativeToolTip": "BlackBoxBoard.Server\\API\\Extensions\\SwaggerExtensions.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T21:46:12.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContextSeed.cs",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
+              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
+              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\ApplicationDbContextSeed.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T21:21:01.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\API\\Program.cs",
+              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\API\\Program.cs",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\API\\Program.cs",
+              "RelativeToolTip": "BlackBoxBoard.Server\\API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T21:09:42.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA0wAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T21:07:48.506Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

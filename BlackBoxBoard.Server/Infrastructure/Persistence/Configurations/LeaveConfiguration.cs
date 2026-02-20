@@ -37,12 +37,12 @@ public class LeaveConfiguration : IEntityTypeConfiguration<Leave>
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.LeaveType)
-            .WithMany(x => x.Leaves)
+            .WithMany()
             .HasForeignKey(x => x.LeaveTypeId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.Status)
-            .WithMany(x => x.Leaves)
+            .WithMany()
             .HasForeignKey(x => x.StatusId)
             .OnDelete(DeleteBehavior.Restrict);
 

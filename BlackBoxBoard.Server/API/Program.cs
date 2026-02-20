@@ -1,68 +1,39 @@
-using BlackBoxBoard.Server.Infrastructure;  // теперь тут есть AddApplication и AddInfrastructure
+using BlackBoxBoard.Server.Extensions;
+using BlackBoxBoard.Server.Infrastructure;
 using BlackBoxBoard.Server.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+await DatabaseExtensions.RunMigrationsIfNeededAsync(args, builder.Configuration);
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerWithJwt(); 
 
-// Swagger
-builder.Services.AddSwaggerGen(c =>
+var isDevelopment = builder.Environment.IsDevelopment();
+if (isDevelopment)
 {
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "BlackBoxBoard API",
-        Version = "v1",
-        Description = "API для управления отпусками"
-    });
-
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Введите JWT токен",
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer"
-    });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
+}
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.UseSwaggerWithUi(); 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// Применяем миграции при запуске
-using (var scope = app.Services.CreateScope())
+if (!app.Environment.IsDevelopment())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.Migrate();
+    await app.ApplyMigrationsOnStartupAsync(); 
 }
 
 app.Run();

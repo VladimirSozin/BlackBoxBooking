@@ -5,7 +5,6 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class EmployeeDepartment : BaseEntity
 {
     private EmployeeDepartment() { }
-
     public EmployeeDepartment(int employeeId, int departmentId, int positionId,
         DateTime startDate, bool isPrimary, decimal fte, int createdBy) : base(createdBy)
     {
@@ -15,7 +14,6 @@ public class EmployeeDepartment : BaseEntity
         StartDate = startDate;
         IsPrimary = isPrimary;
         FTE = fte;
-        IsActive = true;
     }
 
     public int EmployeeId { get; private set; }
@@ -25,7 +23,6 @@ public class EmployeeDepartment : BaseEntity
     public DateTime? EndDate { get; private set; }
     public bool IsPrimary { get; private set; }
     public decimal FTE { get; private set; }
-    public bool IsActive { get; private set; }
     public virtual Employee Employee { get; private set; } = null!;
     public virtual Department Department { get; private set; } = null!;
     public virtual Position Position { get; private set; } = null!;

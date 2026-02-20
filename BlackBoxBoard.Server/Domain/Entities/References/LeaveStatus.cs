@@ -5,20 +5,24 @@ namespace BlackBoxBoard.Server.Domain.References;
 
 public class LeaveStatus : BaseEntity, IReferenceEntity
 {
-    private LeaveStatus() { }
-
+    private LeaveStatus() {}
     public LeaveStatus(string code, string name, int sortOrder, int createdBy) : base(createdBy)
     {
         Code = code;
         Name = name;
         SortOrder = sortOrder;
-        IsActive = true;
     }
 
-    public string Code { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public int SortOrder { get; set; }
-    public bool IsActive { get; set; } = true;
-    public virtual ICollection<Leave> Leaves { get; set; } = new List<Leave>();
+    public string Code { get; private set; } = null!;
+    public string Name { get; private set; } = null!;
+    public int SortOrder { get; private set; }
+    public static class Codes
+    {
+        public const string Planned = "PLANNED";
+        public const string Approved = "APPROVED";
+        public const string Used = "USED";
+        public const string Cancelled = "CANCELLED";
+        public const string Rescheduled = "RESCHEDULED";
+    }
 
 }

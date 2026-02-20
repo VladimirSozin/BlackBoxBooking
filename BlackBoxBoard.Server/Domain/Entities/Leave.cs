@@ -7,7 +7,6 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class Leave : BaseEntity
 {
     private Leave() { }
-
     public Leave(int requestId, int employeeId, int leaveTypeId,
         DateTime startDate, DateTime endDate, decimal durationDays, int createdBy) : base(createdBy)
     {
@@ -29,12 +28,14 @@ public class Leave : BaseEntity
     public int? PreviousLeaveId { get; private set; }
     public string? Comment { get; private set; }
 
-    // Navigation properties
+    // Navigation 
     public virtual Request Request { get; private set; } = null!;
     public virtual Employee Employee { get; private set; } = null!;
     public virtual LeaveType LeaveType { get; private set; } = null!;
     public virtual LeaveStatus Status { get; private set; } = null!;
     public virtual Leave? PreviousLeave { get; private set; }
-    public virtual ICollection<Leave> ChildLeaves { get; private set; } = new List<Leave>();
-    public virtual ICollection<BalanceTransaction> BalanceTransactions { get; private set; } = new List<BalanceTransaction>();
+
+
+    private readonly List<Leave> _childLeaves = new();
+    public virtual IReadOnlyCollection<Leave> ChildLeaves => _childLeaves.AsReadOnly();
 }
