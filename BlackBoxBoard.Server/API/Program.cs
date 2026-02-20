@@ -20,8 +20,16 @@ if (isDevelopment)
 }
 else
 {
+    var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__PostgresConnection")
+       ?? builder.Configuration.GetConnectionString("PostgresConnection");
+
+    if (string.IsNullOrEmpty(connectionString))
+    {
+        throw new InvalidOperationException("PostgreSQL connection string not configured");
+    }
+
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
+        options.UseNpgsql(connectionString));
 }
 
 var app = builder.Build();
