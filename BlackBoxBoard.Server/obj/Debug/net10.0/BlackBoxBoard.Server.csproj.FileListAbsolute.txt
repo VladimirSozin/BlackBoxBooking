@@ -188,4 +188,3 @@ C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\n
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.Production.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
