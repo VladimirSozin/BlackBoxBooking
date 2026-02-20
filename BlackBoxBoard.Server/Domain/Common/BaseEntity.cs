@@ -18,15 +18,13 @@ public abstract class BaseEntity: ISoftDelete
     private List<IDomainEvent> _domainEvents = new();
     public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    protected BaseEntity()
-    {
-        CreatedAt = DateTime.UtcNow;
-        IsActive = true;
-    }
+    protected BaseEntity() {}
 
     protected BaseEntity(int createdBy) : this()
     {
-        CreatedBy = createdBy; 
+        CreatedBy = createdBy;
+        CreatedAt = DateTime.UtcNow; 
+        IsActive = true;
     }
     protected void UpdateAuditFields(int updatedBy)
     {

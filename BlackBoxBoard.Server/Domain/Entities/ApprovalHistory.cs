@@ -6,8 +6,9 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class ApprovalHistory : BaseEntity
 {
     private ApprovalHistory() { }
+
     public ApprovalHistory(int requestId, int stageNumber, int approverId,
-        int decisionId, string? comment, int? nextStageNumber, int createdBy) : base(createdBy)
+        int decisionId, string? comment, int? nextStageNumber, DateTime decisionDate, int createdBy) : base(createdBy)
     {
         RequestId = requestId;
         StageNumber = stageNumber;
@@ -15,7 +16,7 @@ public class ApprovalHistory : BaseEntity
         DecisionId = decisionId;
         Comment = comment;
         NextStageNumber = nextStageNumber;
-        DecisionDate = DateTime.UtcNow;
+        DecisionDate = decisionDate;
     }
 
     public int RequestId { get; private set; }

@@ -6,12 +6,12 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 public class LeaveBalance : BaseEntity
 {
     private LeaveBalance() { }
-    public LeaveBalance(int employeeId, int leaveTypeId, int year, int createdBy) : base(createdBy)
+    public LeaveBalance(int employeeId, int leaveTypeId, int year, DateTime calculatedAt, int createdBy) : base(createdBy)
     {
         EmployeeId = employeeId;
         LeaveTypeId = leaveTypeId;
         Year = year;
-        CalculatedAt = DateTime.UtcNow;
+        CalculatedAt = calculatedAt;
     }
 
     public int EmployeeId { get; private set; }

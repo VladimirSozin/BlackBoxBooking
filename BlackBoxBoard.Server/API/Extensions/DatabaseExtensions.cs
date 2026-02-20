@@ -29,7 +29,6 @@ public static class DatabaseExtensions
 
         await WaitForDatabaseAsync(context);
         await context.Database.MigrateAsync();
-        await ApplicationDbContextSeed.SeedAsync(context);
 
         Console.WriteLine("Migrations and seed completed successfully!");
         Environment.Exit(0); 
@@ -50,7 +49,6 @@ public static class DatabaseExtensions
             }
 
             await context.Database.MigrateAsync();
-            await ApplicationDbContextSeed.SeedAsync(context);
             Console.WriteLine("Startup migrations completed");
         }
         catch (Exception ex)
