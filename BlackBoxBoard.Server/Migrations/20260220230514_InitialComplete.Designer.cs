@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackBoxBoard.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260220225344_SyncModelChanges")]
-    partial class SyncModelChanges
+    [Migration("20260220230514_InitialComplete")]
+    partial class InitialComplete
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
