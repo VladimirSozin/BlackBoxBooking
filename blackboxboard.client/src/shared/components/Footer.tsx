@@ -1,4 +1,4 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
+﻿import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import { Button, Link, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
@@ -27,6 +27,7 @@ const Footer: FunctionComponent = () => {
 					<TelegramIcon />
 				</Button>
 			</div>
+			<Copyright />
 		</div>
 	);
 };
