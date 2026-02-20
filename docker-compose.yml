@@ -13,7 +13,7 @@ services:
       - app_data:/app/data
 
   frontend:
-    build: ./BlackBoxBoard.client
+    build: ./blackboxboard.client
     ports:
       - "3000:80"
     depends_on:
