@@ -6,9 +6,6 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
-await DatabaseExtensions.RunMigrationsIfNeededAsync(args, builder.Configuration);
-
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerWithJwt(); 
@@ -42,6 +39,8 @@ else
 }
 
 var app = builder.Build();
+
+await DatabaseExtensions.RunMigrationsIfNeededAsync(args, app.Configuration);
 
 app.UseSwaggerWithUi(); 
 app.UseHttpsRedirection();

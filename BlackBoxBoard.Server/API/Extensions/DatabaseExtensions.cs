@@ -5,7 +5,6 @@ namespace BlackBoxBoard.Server.Extensions;
 
 public static class DatabaseExtensions
 {
-    /// Применяет миграции при запуске с флагом --migrate-database
     public static async Task RunMigrationsIfNeededAsync(string[] args, IConfiguration configuration)
     {
         if (!args.Contains("--migrate-database"))
