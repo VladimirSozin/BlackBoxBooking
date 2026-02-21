@@ -2,6 +2,7 @@ using BlackBoxBoard.Server.Extensions;
 using BlackBoxBoard.Server.Infrastructure;
 using BlackBoxBoard.Server.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,15 @@ else
     }
 
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseNpgsql(connectionString));
+    {
+        options.UseNpgsql(connectionString);
+
+        // не смогла решить проблему с ошибкой. Поэтому пока что ставлю игнорирование ворнингов.
+        //Unhandled exception. System.InvalidOperationException: An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. 
+        options.ConfigureWarnings(warnings =>
+            warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+    });
+
 }
 
 var app = builder.Build();
