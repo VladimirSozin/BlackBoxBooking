@@ -1,8 +1,12 @@
 ﻿using BlackBoxBoard.Server.Domain.Common;
 using BlackBoxBoard.Server.Domain.References;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackBoxBoard.Server.Domain.Entities;
 
+[Index(nameof(RequestNumber), IsUnique = true)]
+[Index(nameof(EmployeeId))]
+[Index(nameof(StatusId))]
 public class Request : BaseEntity, IAggregateRoot
 {
     private Request() { }

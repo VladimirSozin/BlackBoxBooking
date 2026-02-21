@@ -33,7 +33,7 @@ namespace BlackBoxBoard.Server.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            DatabaseConfiguration.ConfigureModel(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
     }

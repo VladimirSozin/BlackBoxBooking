@@ -20,12 +20,12 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -42,13 +42,13 @@ namespace BlackBoxBoard.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    IsFinal = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: false),
+                    IsFinal = table.Column<bool>(type: "INTEGER", nullable: false),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -70,7 +70,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -97,7 +97,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -119,7 +119,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -137,12 +137,12 @@ namespace BlackBoxBoard.Server.Migrations
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Grade = table.Column<int>(type: "INTEGER", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -164,7 +164,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -181,13 +181,13 @@ namespace BlackBoxBoard.Server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Code = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
                     SortOrder = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 0),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -210,7 +210,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -235,7 +235,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -252,7 +252,8 @@ namespace BlackBoxBoard.Server.Migrations
                         name: "FK_Employees_Positions_PositionId",
                         column: x => x.PositionId,
                         principalTable: "Positions",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -269,7 +270,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -338,7 +339,7 @@ namespace BlackBoxBoard.Server.Migrations
                     Email = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    MiddleName = table.Column<string>(type: "TEXT", nullable: true),
+                    MiddleName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
                     Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: true),
                     RoleId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -349,7 +350,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -438,7 +439,7 @@ namespace BlackBoxBoard.Server.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedBy = table.Column<int>(type: "INTEGER", nullable: false),
                     UpdatedBy = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     DeletedBy = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -674,7 +675,8 @@ namespace BlackBoxBoard.Server.Migrations
                         name: "FK_BalanceTransactions_Requests_RequestId",
                         column: x => x.RequestId,
                         principalTable: "Requests",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BalanceTransactions_TransactionTypes_TransactionTypeId",
                         column: x => x.TransactionTypeId,
@@ -685,72 +687,67 @@ namespace BlackBoxBoard.Server.Migrations
                         name: "FK_BalanceTransactions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalHistories_ApproverId",
+                name: "IX_ApprovalHistory_ApproverId",
                 table: "ApprovalHistories",
                 column: "ApproverId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalHistories_DecisionId",
+                name: "IX_ApprovalHistory_DecisionId",
                 table: "ApprovalHistories",
                 column: "DecisionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalHistories_RequestId",
+                name: "IX_ApprovalHistory_RequestId",
                 table: "ApprovalHistories",
                 column: "RequestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalStages_DepartmentId",
+                name: "IX_ApprovalStage_DepartmentId",
                 table: "ApprovalStages",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalStages_PositionId",
+                name: "IX_ApprovalStage_PositionId",
                 table: "ApprovalStages",
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalStages_RoleId",
+                name: "IX_ApprovalStage_RoleId",
                 table: "ApprovalStages",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalStages_TemplateId",
+                name: "IX_ApprovalStage_TemplateId",
                 table: "ApprovalStages",
                 column: "TemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApprovalTemplates_Code",
-                table: "ApprovalTemplates",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_EmployeeId",
+                name: "IX_BalanceTransaction_EmployeeId",
                 table: "BalanceTransactions",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_LeaveId",
+                name: "IX_BalanceTransaction_LeaveId",
                 table: "BalanceTransactions",
                 column: "LeaveId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_LeaveTypeId",
+                name: "IX_BalanceTransaction_LeaveTypeId",
                 table: "BalanceTransactions",
                 column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_RequestId",
+                name: "IX_BalanceTransaction_RequestId",
                 table: "BalanceTransactions",
                 column: "RequestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BalanceTransactions_TransactionTypeId",
+                name: "IX_BalanceTransaction_TransactionTypeId",
                 table: "BalanceTransactions",
                 column: "TransactionTypeId");
 
@@ -758,18 +755,6 @@ namespace BlackBoxBoard.Server.Migrations
                 name: "IX_BalanceTransactions_UserId",
                 table: "BalanceTransactions",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DecisionTypes_Code",
-                table: "DecisionTypes",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Departments_Code",
-                table: "Departments",
-                column: "Code",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Departments_ManagerId",
@@ -782,49 +767,29 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartment_Employee_Department_Primary",
-                table: "EmployeeDepartments",
-                columns: new[] { "EmployeeId", "DepartmentId", "IsPrimary" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartment_IsActive",
-                table: "EmployeeDepartments",
-                column: "IsActive");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartment_StartDate",
-                table: "EmployeeDepartments",
-                column: "StartDate");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartments_DepartmentId",
+                name: "IX_EmployeeDepartment_DepartmentId",
                 table: "EmployeeDepartments",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartments_EmployeeId_DepartmentId_StartDate",
+                name: "IX_EmployeeDepartment_Employee_Department_StartDate",
                 table: "EmployeeDepartments",
                 columns: new[] { "EmployeeId", "DepartmentId", "StartDate" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeDepartments_PositionId",
+                name: "IX_EmployeeDepartment_PositionId",
                 table: "EmployeeDepartments",
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_EmployeeNumber",
+                name: "IX_Employees_EmployeeNumber",
                 table: "Employees",
                 column: "EmployeeNumber",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employee_IsActive",
-                table: "Employees",
-                column: "IsActive");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employee_ManagerId",
+                name: "IX_Employees_ManagerId",
                 table: "Employees",
                 column: "ManagerId");
 
@@ -834,7 +799,7 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "PositionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveBalances_EmployeeId_LeaveTypeId_Year",
+                name: "IX_LeaveBalance_Employee_LeaveType_Year",
                 table: "LeaveBalances",
                 columns: new[] { "EmployeeId", "LeaveTypeId", "Year" },
                 unique: true);
@@ -845,14 +810,24 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Leaves_EmployeeId",
+                name: "IX_Leave_EmployeeId",
                 table: "Leaves",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Leaves_LeaveTypeId",
+                name: "IX_Leave_LeaveTypeId",
                 table: "Leaves",
                 column: "LeaveTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Leave_RequestId",
+                table: "Leaves",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Leave_StatusId",
+                table: "Leaves",
+                column: "StatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Leaves_PreviousLeaveId",
@@ -860,43 +835,14 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "PreviousLeaveId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Leaves_RequestId",
-                table: "Leaves",
-                column: "RequestId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Leaves_StatusId",
-                table: "Leaves",
-                column: "StatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LeaveStatuses_Code",
-                table: "LeaveStatuses",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LeaveTypes_Code",
-                table: "LeaveTypes",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OperationTypes_Code",
-                table: "OperationTypes",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Positions_Code",
-                table: "Positions",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Request_EmployeeId",
+                name: "IX_Request_ApprovalTemplateId",
                 table: "Requests",
-                column: "EmployeeId");
+                column: "ApprovalTemplateId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Request_DepartmentId",
+                table: "Requests",
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Request_EmployeeId_CreatedAt",
@@ -904,10 +850,9 @@ namespace BlackBoxBoard.Server.Migrations
                 columns: new[] { "EmployeeId", "CreatedAt" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Request_RequestNumber",
+                name: "IX_Request_OperationTypeId",
                 table: "Requests",
-                column: "RequestNumber",
-                unique: true);
+                column: "OperationTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Request_StatusId",
@@ -915,64 +860,35 @@ namespace BlackBoxBoard.Server.Migrations
                 column: "StatusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_ApprovalTemplateId",
+                name: "IX_Requests_EmployeeId",
                 table: "Requests",
-                column: "ApprovalTemplateId");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_DepartmentId",
+                name: "IX_Requests_RequestNumber",
                 table: "Requests",
-                column: "DepartmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Requests_OperationTypeId",
-                table: "Requests",
-                column: "OperationTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RequestStatuses_Code",
-                table: "RequestStatuses",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Roles_Code",
-                table: "Roles",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TransactionTypes_Code",
-                table: "TransactionTypes",
-                column: "Code",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_Email",
-                table: "Users",
-                column: "Email",
+                column: "RequestNumber",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_EmployeeId",
                 table: "Users",
                 column: "EmployeeId",
-                unique: true,
-                filter: "[EmployeeId] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_EmployeeId_Unique",
-                table: "Users",
-                column: "EmployeeId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_RoleId",
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_Username",
+                name: "IX_Users_Username",
                 table: "Users",
                 column: "Username",
                 unique: true);

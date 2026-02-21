@@ -8,7 +8,7 @@ namespace BlackBoxBoard.Server.Domain.Entities;
 
 [Index(nameof(Username), IsUnique = true)]
 [Index(nameof(Email), IsUnique = true)]
-[Index(nameof(EmployeeId), IsUnique = true, Name = "IX_User_EmployeeId_Unique")]
+[Index(nameof(EmployeeId), IsUnique = true)]
 public class User : BaseEntity, IAggregateRoot
 {
     private User() { } 

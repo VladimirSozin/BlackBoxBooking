@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackBoxBoard.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260220233341_InitialCreate")]
+    [Migration("20260221000011_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -76,15 +76,19 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartmentId")
+                        .HasDatabaseName("IX_ApprovalStage_DepartmentId");
 
-                    b.HasIndex("PositionId");
+                    b.HasIndex("PositionId")
+                        .HasDatabaseName("IX_ApprovalStage_PositionId");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("IX_ApprovalStage_RoleId");
 
-                    b.HasIndex("TemplateId");
+                    b.HasIndex("TemplateId")
+                        .HasDatabaseName("IX_ApprovalStage_TemplateId");
 
-                    b.ToTable("ApprovalStages", (string)null);
+                    b.ToTable("ApprovalStages");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.ApprovalHistory", b =>
@@ -138,13 +142,16 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApproverId");
+                    b.HasIndex("ApproverId")
+                        .HasDatabaseName("IX_ApprovalHistory_ApproverId");
 
-                    b.HasIndex("DecisionId");
+                    b.HasIndex("DecisionId")
+                        .HasDatabaseName("IX_ApprovalHistory_DecisionId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestId")
+                        .HasDatabaseName("IX_ApprovalHistory_RequestId");
 
-                    b.ToTable("ApprovalHistories", (string)null);
+                    b.ToTable("ApprovalHistories");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.BalanceTransaction", b =>
@@ -205,19 +212,24 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .HasDatabaseName("IX_BalanceTransaction_EmployeeId");
 
-                    b.HasIndex("LeaveId");
+                    b.HasIndex("LeaveId")
+                        .HasDatabaseName("IX_BalanceTransaction_LeaveId");
 
-                    b.HasIndex("LeaveTypeId");
+                    b.HasIndex("LeaveTypeId")
+                        .HasDatabaseName("IX_BalanceTransaction_LeaveTypeId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestId")
+                        .HasDatabaseName("IX_BalanceTransaction_RequestId");
 
-                    b.HasIndex("TransactionTypeId");
+                    b.HasIndex("TransactionTypeId")
+                        .HasDatabaseName("IX_BalanceTransaction_TransactionTypeId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BalanceTransactions", (string)null);
+                    b.ToTable("BalanceTransactions");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Department", b =>
@@ -244,9 +256,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("ManagerId")
                         .HasColumnType("INTEGER");
@@ -267,14 +277,11 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
                     b.HasIndex("ManagerId");
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Employee", b =>
@@ -307,9 +314,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("ManagerId")
                         .HasColumnType("INTEGER");
@@ -329,18 +334,13 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeNumber")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Employee_EmployeeNumber");
+                        .IsUnique();
 
-                    b.HasIndex("IsActive")
-                        .HasDatabaseName("IX_Employee_IsActive");
-
-                    b.HasIndex("ManagerId")
-                        .HasDatabaseName("IX_Employee_ManagerId");
+                    b.HasIndex("ManagerId");
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.EmployeeDepartment", b =>
@@ -377,9 +377,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasDefaultValue(1.0m);
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsPrimary")
                         .ValueGeneratedOnAdd()
@@ -400,23 +398,17 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartmentId")
+                        .HasDatabaseName("IX_EmployeeDepartment_DepartmentId");
 
-                    b.HasIndex("IsActive")
-                        .HasDatabaseName("IX_EmployeeDepartment_IsActive");
-
-                    b.HasIndex("PositionId");
-
-                    b.HasIndex("StartDate")
-                        .HasDatabaseName("IX_EmployeeDepartment_StartDate");
-
-                    b.HasIndex("EmployeeId", "DepartmentId", "IsPrimary")
-                        .HasDatabaseName("IX_EmployeeDepartment_Employee_Department_Primary");
+                    b.HasIndex("PositionId")
+                        .HasDatabaseName("IX_EmployeeDepartment_PositionId");
 
                     b.HasIndex("EmployeeId", "DepartmentId", "StartDate")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_EmployeeDepartment_Employee_Department_StartDate");
 
-                    b.ToTable("EmployeeDepartments", (string)null);
+                    b.ToTable("EmployeeDepartments");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Leave", b =>
@@ -477,17 +469,21 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("EmployeeId")
+                        .HasDatabaseName("IX_Leave_EmployeeId");
 
-                    b.HasIndex("LeaveTypeId");
+                    b.HasIndex("LeaveTypeId")
+                        .HasDatabaseName("IX_Leave_LeaveTypeId");
 
                     b.HasIndex("PreviousLeaveId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestId")
+                        .HasDatabaseName("IX_Leave_RequestId");
 
-                    b.HasIndex("StatusId");
+                    b.HasIndex("StatusId")
+                        .HasDatabaseName("IX_Leave_StatusId");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.LeaveBalance", b =>
@@ -552,9 +548,10 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasIndex("LeaveTypeId");
 
                     b.HasIndex("EmployeeId", "LeaveTypeId", "Year")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_LeaveBalance_Employee_LeaveType_Year");
 
-                    b.ToTable("LeaveBalances", (string)null);
+                    b.ToTable("LeaveBalances");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Position", b =>
@@ -581,15 +578,14 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("Grade")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -604,10 +600,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("Positions", (string)null);
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.Request", b =>
@@ -672,18 +665,19 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApprovalTemplateId");
+                    b.HasIndex("ApprovalTemplateId")
+                        .HasDatabaseName("IX_Request_ApprovalTemplateId");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartmentId")
+                        .HasDatabaseName("IX_Request_DepartmentId");
 
-                    b.HasIndex("EmployeeId")
-                        .HasDatabaseName("IX_Request_EmployeeId");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("OperationTypeId");
+                    b.HasIndex("OperationTypeId")
+                        .HasDatabaseName("IX_Request_OperationTypeId");
 
                     b.HasIndex("RequestNumber")
-                        .IsUnique()
-                        .HasDatabaseName("IX_Request_RequestNumber");
+                        .IsUnique();
 
                     b.HasIndex("StatusId")
                         .HasDatabaseName("IX_Request_StatusId");
@@ -691,7 +685,7 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasIndex("EmployeeId", "CreatedAt")
                         .HasDatabaseName("IX_Request_EmployeeId_CreatedAt");
 
-                    b.ToTable("Requests", (string)null);
+                    b.ToTable("Requests");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.Entities.User", b =>
@@ -729,9 +723,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsEmployee")
                         .HasColumnType("INTEGER");
@@ -745,6 +737,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MiddleName")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -768,25 +761,18 @@ namespace BlackBoxBoard.Server.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
-                        .IsUnique()
-                        .HasDatabaseName("IX_User_Email");
+                        .IsUnique();
 
                     b.HasIndex("EmployeeId")
                         .IsUnique()
-                        .HasDatabaseName("IX_User_EmployeeId")
-                        .HasFilter("[EmployeeId] IS NOT NULL");
+                        .HasDatabaseName("IX_User_EmployeeId");
 
-                    b.HasIndex("RoleId")
-                        .HasDatabaseName("IX_User_RoleId");
+                    b.HasIndex("RoleId");
 
                     b.HasIndex("Username")
-                        .IsUnique()
-                        .HasDatabaseName("IX_User_Username");
-
-                    b.HasIndex(new[] { "EmployeeId" }, "IX_User_EmployeeId_Unique")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.ApprovalTemplate", b =>
@@ -813,12 +799,11 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -838,10 +823,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("ApprovalTemplates", (string)null);
+                    b.ToTable("ApprovalTemplates");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.DecisionType", b =>
@@ -868,14 +850,10 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsFinal")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(false);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -895,10 +873,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("DecisionTypes", (string)null);
+                    b.ToTable("DecisionTypes");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.LeaveStatus", b =>
@@ -925,9 +900,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -947,10 +920,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("LeaveStatuses", (string)null);
+                    b.ToTable("LeaveStatuses");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.LeaveType", b =>
@@ -984,9 +954,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsPaid")
                         .HasColumnType("INTEGER");
@@ -1019,10 +987,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("LeaveTypes", (string)null);
+                    b.ToTable("LeaveTypes");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.OperationType", b =>
@@ -1049,9 +1014,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1071,10 +1034,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("OperationTypes", (string)null);
+                    b.ToTable("OperationTypes");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.RequestStatus", b =>
@@ -1101,9 +1061,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1123,10 +1081,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("RequestStatuses", (string)null);
+                    b.ToTable("RequestStatuses");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.Role", b =>
@@ -1153,12 +1108,11 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(500)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1178,10 +1132,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("BlackBoxBoard.Server.Domain.References.TransactionType", b =>
@@ -1208,9 +1159,7 @@ namespace BlackBoxBoard.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasDefaultValue(true);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1235,10 +1184,7 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.ToTable("TransactionTypes", (string)null);
+                    b.ToTable("TransactionTypes");
                 });
 
             modelBuilder.Entity("ApprovalStage", b =>
@@ -1321,7 +1267,8 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.Request", "Request")
                         .WithMany()
-                        .HasForeignKey("RequestId");
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BlackBoxBoard.Server.Domain.References.TransactionType", "TransactionType")
                         .WithMany()
@@ -1331,7 +1278,8 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.User", null)
                         .WithMany("CreatedTransactions")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Employee");
 
@@ -1370,7 +1318,8 @@ namespace BlackBoxBoard.Server.Migrations
 
                     b.HasOne("BlackBoxBoard.Server.Domain.Entities.Position", null)
                         .WithMany("Employees")
-                        .HasForeignKey("PositionId");
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Manager");
                 });

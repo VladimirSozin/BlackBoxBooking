@@ -1,8 +1,12 @@
 ﻿using BlackBoxBoard.Server.Domain.Common;
 using BlackBoxBoard.Server.Domain.References;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackBoxBoard.Server.Domain.Entities;
 
+[Index(nameof(EmployeeId))]
+[Index(nameof(LeaveTypeId))]
+[Index(nameof(TransactionTypeId))]
 public class BalanceTransaction : BaseEntity
 {
     private BalanceTransaction() { }

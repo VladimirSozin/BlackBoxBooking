@@ -1,9 +1,14 @@
 ﻿using BlackBoxBoard.Server.Domain.Common;
 using BlackBoxBoard.Server.Domain.References;
 using BlackBoxBoard.Server.Domain.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackBoxBoard.Server.Domain.Entities;
 
+[Index(nameof(EmployeeId))]
+[Index(nameof(LeaveTypeId))]
+[Index(nameof(StatusId))]
+[Index(nameof(RequestId))]
 public class Leave : BaseEntity
 {
     private Leave() { }
