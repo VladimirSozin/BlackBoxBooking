@@ -40,8 +40,6 @@ else
 
 var app = builder.Build();
 
-await DatabaseExtensions.RunMigrationsIfNeededAsync(args, app.Configuration);
-
 app.UseSwaggerWithUi(); 
 app.UseHttpsRedirection();
 app.UseAuthorization();
@@ -49,7 +47,7 @@ app.MapControllers();
 
 if (!app.Environment.IsDevelopment())
 {
-    await app.ApplyMigrationsOnStartupAsync(); 
+    app.MigrateDatabase();
 }
 
 app.Run();
