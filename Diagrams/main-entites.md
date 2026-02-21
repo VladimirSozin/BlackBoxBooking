@@ -5,67 +5,75 @@ config:
   layout: elk
 ---
 erDiagram
-    Roles {
+    Role {
         SERIAL ID PK "Идентификатор"
-        VARCHAR Code "Код 
-		(ADMIN, MANAGER, EMPLOYEE, HR)"
-        VARCHAR(100) Name "Название"
+        VARCHAR Code "Код (ADMIN, MANAGER, HR, EMPLOYEE)"
+        VARCHAR Name "Название"
         TEXT Description "Описание"
+        INT SortOrder "Порядок сортировки"
     }
     
-    Users {
+    User {
         SERIAL ID PK "Идентификатор"
-        VARCHAR Username "Логин"
+        VARCHAR Username "Логин (уникальный)"
+        VARCHAR Email "Электронная почта (уникальная)"
         VARCHAR FirstName "Имя"
         VARCHAR LastName "Фамилия"
         VARCHAR MiddleName "Отчество"
         VARCHAR Phone "Телефон"
         DATE DateOfBirth "Дата рождения"
-        VARCHAR Email "Электронная почта"
-        INTEGER RoleID FK "Роль"
-        INTEGER EmployeeID FK "Привязка к сотруднику 
-		(если является сотрдуником)"
-        BOOLEAN IsActive "Активен ли пользователь"
+        INT RoleID FK "Роль"
+        INT EmployeeID FK "Привязка к сотруднику (уникальная)"
+        BOOLEAN IsEmployee "Является сотрудником"
+        TIMESTAMP LastLoginAt "Последний вход"
         TIMESTAMP CreatedAt "Дата создания"
     }
 
-    Positions {
+    Position {
         SERIAL ID PK "Идентификатор"
         VARCHAR Code "Код"
         VARCHAR Name "Название"
+        INT Grade "Грейд"
         TEXT Description "Описание"
     }
     
-    Employees {
+    Employee {
         SERIAL ID PK "Идентификатор"
+        VARCHAR EmployeeNumber "Табельный номер (уникальный)"
         DATE HireDate "Дата приема на работу"
-        BOOLEAN IsActive "Активен ли в компании"
+        DATE TerminationDate "Дата увольнения"
+        INT ManagerId FK "Руководитель (Employee.ID)"
+        BOOLEAN HasUserAccount "Есть учетная запись"
+        BOOLEAN IsActive "Активен в компании"
     }
     
-    Departments {
+    Department {
         SERIAL ID PK "Идентификатор"
-        INTEGER ParentID FK "Родительский отдел"
+        INT ParentId FK "Родительский отдел"
         VARCHAR Code "Код"
         VARCHAR Name "Название"
-        INTEGER ManagerID FK "Руководитель"
+        INT ManagerId FK "Руководитель (Employee.ID)"
     }
     
-    EmployeeDepartments {
+    EmployeeDepartment {
         SERIAL ID PK "Идентификатор"
-        INTEGER EmployeeID FK "Сотрудник"
-        INTEGER DepartmentID FK "Отдел"
-        INTEGER PositionID FK "Должность"
-        DATE StartDate "Дата начала работы в отделе"
-        DATE EndDate "Дата окончания работы в отделе"
+        INT EmployeeId FK "Сотрудник"
+        INT DepartmentId FK "Отдел"
+        INT PositionId FK "Должность"
+        DATE StartDate "Дата начала"
+        DATE EndDate "Дата окончания"
         BOOLEAN IsPrimary "Основное место работы"
-        TIMESTAMP CreatedAt "Дата создания записи"
+        DECIMAL FTE "Ставка (Full-Time Equivalent)"
     }
     
-    Roles ||--o{ Users : "Roles.ID → Users.RoleID"
-    Users ||--|| Employees : "Users.EmployeeID → Employees.ID"
-    Positions ||--o{ Employees : "Positions.ID → Employees.PositionID"
-    Positions ||--o{ EmployeeDepartments : "Positions.ID → EmployeeDepartments.PositionID"
-    Employees ||--o{ EmployeeDepartments : "Employees.ID → EmployeeDepartments.EmployeeID"
-    Departments ||--o{ EmployeeDepartments : "Departments.ID → EmployeeDepartments.DepartmentID"
-    Departments ||--o{ Departments : "Departments.ID → Departments.ParentID"
-    Departments ||--|| Employees : "Departments.ManagerID → Employees.ID"
+    Role ||--o{ User : "Role.ID → User.RoleID"
+    User ||--o| Employee : "User.EmployeeID → Employee.ID"
+    
+    Employee ||--o{ Employee : "Employee.ID → Employee.ManagerId"
+    Employee ||--o{ EmployeeDepartment : "Employee.ID → EmployeeDepartment.EmployeeId"
+    Employee ||--o{ Department : "Employee.ID → Department.ManagerId"
+    
+    Department ||--o{ Department : "Department.ID → Department.ParentId"
+    Department ||--o{ EmployeeDepartment : "Department.ID → EmployeeDepartment.DepartmentId"
+    
+    Position ||--o{ EmployeeDepartment : "Position.ID → EmployeeDepartment.PositionId"
