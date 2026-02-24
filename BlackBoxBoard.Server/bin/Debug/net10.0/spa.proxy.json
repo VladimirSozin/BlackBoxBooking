@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:53830",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\..\\blackboxboard.client",
+"WorkingDirectory": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\..\\blackboxboard.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

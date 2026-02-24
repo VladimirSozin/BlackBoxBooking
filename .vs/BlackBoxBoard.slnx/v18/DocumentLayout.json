@@ -1,122 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\balancetransactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\balancetransactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\requestconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\requestconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\requeststatusconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\requeststatusconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\leavebalanceconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D72CD9B-95F1-9542-BD9C-484D7525EE40}|BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj|solutionrelative:blackboxboard.server\\infrastructure\\persistence\\configurations (not used)\\leavebalanceconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:47:29.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BalanceTransactionConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\BalanceTransactionConfiguration.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\BalanceTransactionConfiguration.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\BalanceTransactionConfiguration.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\BalanceTransactionConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:45:55.253Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RequestConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestConfiguration.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestConfiguration.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestConfiguration.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestConfiguration.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:45:06.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RequestStatusConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestStatusConfiguration.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestStatusConfiguration.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestStatusConfiguration.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\RequestStatusConfiguration.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:44:54.484Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\UserConfiguration.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\UserConfiguration.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\UserConfiguration.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\UserConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:42:30.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LeaveBalanceConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\LeaveBalanceConfiguration.cs",
-              "RelativeDocumentMoniker": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\LeaveBalanceConfiguration.cs",
-              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\LeaveBalanceConfiguration.cs",
-              "RelativeToolTip": "BlackBoxBoard.Server\\Infrastructure\\Persistence\\Configurations (not used)\\LeaveBalanceConfiguration.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T23:44:06.704Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

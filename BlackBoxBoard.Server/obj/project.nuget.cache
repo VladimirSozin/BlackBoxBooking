@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LLK03SCV0rY=",
+  "dgSpecHash": "a+UiV2967yk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
+  "projectFilePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admstrekv71\\.nuget\\packages\\aspnetcore.healthchecks.npgsql\\9.0.0\\aspnetcore.healthchecks.npgsql.9.0.0.nupkg.sha512",
     "C:\\Users\\admstrekv71\\.nuget\\packages\\automapper\\16.0.0\\automapper.16.0.0.nupkg.sha512",
@@ -86,9 +86,9 @@
       "code": "NU1510",
       "level": "Warning",
       "message": "PackageReference Microsoft.AspNetCore.Identity will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
-      "projectPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
+      "projectPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
+      "filePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
       "libraryId": "Microsoft.AspNetCore.Identity",
       "targetGraphs": [
         "net10.0"
@@ -98,9 +98,9 @@
       "code": "NU1510",
       "level": "Warning",
       "message": "PackageReference Microsoft.Extensions.Diagnostics.HealthChecks will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
-      "projectPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
+      "projectPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
+      "filePath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\BlackBoxBoard.Server\\BlackBoxBoard.Server.csproj",
       "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks",
       "targetGraphs": [
         "net10.0"
