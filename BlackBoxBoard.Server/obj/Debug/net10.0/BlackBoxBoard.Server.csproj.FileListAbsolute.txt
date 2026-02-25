@@ -189,9 +189,6 @@ C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\n
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.Production.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
-C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.Development.json
-C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.json
-C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\API\appsettings.Production.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\BlackBoxBoard.Server.staticwebassets.endpoints.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\spa.proxy.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\BlackBoxBoard.Server.exe
@@ -373,10 +370,12 @@ C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Serv
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\BlackBox.37014449.Up2Date
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\BlackBoxBoard.Server.dll
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\refint\BlackBoxBoard.Server.dll
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\BlackBoxBoard.Server.pdb
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\BlackBoxBoard.Server.genruntimeconfig.cache
 C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\obj\Debug\net10.0\ref\BlackBoxBoard.Server.dll
+C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\appsettings.json
+C:\Users\admstrekv71\Desktop\OTUS\BlackBoxBoard\BlackBoxBoard\BlackBoxBoard.Server\bin\Debug\net10.0\appsettings.Production.json

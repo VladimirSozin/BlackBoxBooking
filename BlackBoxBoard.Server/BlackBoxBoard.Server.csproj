@@ -56,7 +56,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Employees\Queries\GetEmployeeById\" />
+    <Folder Include="Modules\ApprovalWorkflow\Application\Queries\GetEmployeeRequests\" />
+    <Folder Include="Modules\ApprovalWorkflow\Application\Queries\GetPendingRequests\" />
+    <Folder Include="Modules\ApprovalWorkflow\Application\Queries\GetRequestById\" />
+    <Folder Include="Modules\ApprovalWorkflow\Application\Queries\GetRequestsForApprover\" />
+    <Folder Include="Modules\Employees\Application\Commands\TransferEmployee\" />
+    <Folder Include="Modules\Employees\Application\Commands\TerminateEmployee\" />
+    <Folder Include="Modules\Employees\Application\Commands\UpdateEmployee\" />
+    <Folder Include="Modules\Employees\Application\Queries\GetEmployeeBalance\" />
+    <Folder Include="Modules\Employees\Application\Queries\GetEmployeeById\" />
+    <Folder Include="Modules\ApprovalWorkflow\Domain\ValueObjects\" />
+    <Folder Include="Modules\Employees\Application\Queries\GetEmployeeByNumber\" />
+    <Folder Include="Modules\Employees\Application\Queries\GetDepartmentEmployees\" />
+    <Folder Include="Modules\Employees\Application\Queries\GetEmployeeHierarchy\" />
+    <Folder Include="Modules\Employees\Domain\Events\" />
+    <Folder Include="Modules\LeaveManagement\Application\Commands\CancelLeave\" />
+    <Folder Include="Modules\LeaveManagement\Application\Commands\RequestLeave\" />
+    <Folder Include="Modules\LeaveManagement\Application\Queries\GetDepartmentBalances\" />
+    <Folder Include="Modules\LeaveManagement\Application\Queries\GetEmployeeBalance\" />
+    <Folder Include="Modules\LeaveManagement\Application\Queries\GetLeaveCalendar\" />
+    <Folder Include="Modules\References\Application\Commands\CreateLeaveType\" />
+    <Folder Include="Modules\References\Application\Commands\DeactivateLeaveType\" />
+    <Folder Include="Modules\References\Application\Commands\UpdateLeaveType\" />
+    <Folder Include="Modules\References\Application\Queries\GetActiveLeaveTypes\" />
+    <Folder Include="Modules\References\Application\Queries\GetAllLeaveTypes\" />
+    <Folder Include="Modules\References\Application\Queries\GetLeaveTypeById\" />
+    <Folder Include="Modules\References\Domain\Events\" />
+    <Folder Include="Modules\References\Domain\ValueObjects\" />
+    <Folder Include="Modules\Users\Application\Commands\LinkToEmployee\" />
+    <Folder Include="Modules\Users\Application\Commands\ChangePassword\" />
+    <Folder Include="Modules\Users\Application\Commands\UpdateUser\" />
+    <Folder Include="Modules\Users\Application\Commands\RegisterUser\" />
+    <Folder Include="Modules\Users\Application\Queries\GetUserById\" />
+    <Folder Include="Modules\Users\Application\Queries\GetUsersByRole\" />
+    <Folder Include="Modules\Users\Application\Queries\GetUserByEmail\" />
   </ItemGroup>
 
 </Project>

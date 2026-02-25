@@ -1,5 +1,4 @@
-﻿using BlackBoxBoard.Server.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace BlackBoxBoard.Server.Extensions;
 

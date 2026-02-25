@@ -1,40 +1,24 @@
-﻿using BlackBoxBoard.Server.Domain.Entities;
-using BlackBoxBoard.Server.Domain.References;
+﻿using BlackBoxBoard.Server.Modules.Employees;  
+using BlackBoxBoard.Server.Modules.LeaveManagement;
+using BlackBoxBoard.Server.Modules.ApprovalWorkflow;
+using BlackBoxBoard.Server.Modules.References;
+using BlackBoxBoard.Server.Modules.Users;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
-namespace BlackBoxBoard.Server.Infrastructure.Persistence
+public class AppDbContext : DbContext
 {
-    public class AppDbContext : DbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
-        public DbSet<RequestStatus> RequestStatuses { get; set; }
-        public DbSet<LeaveStatus> LeaveStatuses { get; set; }
-        public DbSet<OperationType> OperationTypes { get; set; }
-        public DbSet<LeaveType> LeaveTypes { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<DecisionType> DecisionTypes { get; set; }
-        public DbSet<TransactionType> TransactionTypes { get; set; }
-        public DbSet<ApprovalTemplate> ApprovalTemplates { get; set; }
-        public DbSet<ApprovalStage> ApprovalStages { get; set; }
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackBoxBoard.Server.Modules.Employees.ModuleRegistration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackBoxBoard.Server.Modules.LeaveManagement.ModuleRegistration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackBoxBoard.Server.Modules.ApprovalWorkflow.ModuleRegistration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackBoxBoard.Server.Modules.References.ModuleRegistration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BlackBoxBoard.Server.Modules.Users.ModuleRegistration).Assembly);
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<EmployeeDepartment> EmployeeDepartments { get; set; }
-        public DbSet<Request> Requests { get; set; }
-        public DbSet<Leave> Leaves { get; set; }
-        public DbSet<ApprovalHistory> ApprovalHistories { get; set; }
-        public DbSet<LeaveBalance> LeaveBalances { get; set; }
-        public DbSet<BalanceTransaction> BalanceTransactions { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            DatabaseConfiguration.ConfigureModel(modelBuilder);
-            base.OnModelCreating(modelBuilder);
-        }
+        base.OnModelCreating(modelBuilder);
     }
 }
