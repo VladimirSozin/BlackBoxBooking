@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useState, useEffect } from "react";
 import {
-    Alert, Card, Stack, Box, Button, CssBaseline,
+    Alert, Stack, Box, Button,
     FormControl, FormLabel, Link, TextField, Typography,
     LinearProgress, FormHelperText, CircularProgress,
-    Checkbox, FormControlLabel, InputAdornment, IconButton
+    Checkbox, FormControlLabel, InputAdornment, IconButton, Paper
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { SubmitHandler, useForm, Controller } from "react-hook-form"; // Добавлен Controller
+import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../modules/auth/authApi";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
@@ -26,13 +24,9 @@ interface PhoneInputProps {
 
 const PhoneInput = ({ value = '', onChange, error, helperText, ...props }: PhoneInputProps) => {
     const formatPhone = (input: string) => {
-        // Убираем все нецифровые символы
         const numbers = input.replace(/\D/g, '');
-
-        // Ограничиваем длину
         const limited = numbers.slice(0, 11);
 
-        // Форматируем
         if (limited.length <= 1) return `+7 (${limited}`;
         if (limited.length <= 4) return `+7 (${limited.slice(1, 4)}`;
         if (limited.length <= 7) return `+7 (${limited.slice(1, 4)}) ${limited.slice(4, 7)}`;
@@ -42,7 +36,6 @@ const PhoneInput = ({ value = '', onChange, error, helperText, ...props }: Phone
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const formatted = formatPhone(e.target.value);
-        // Создаем новое событие с отформатированным значением
         const newEvent = {
             ...e,
             target: {
@@ -80,7 +73,7 @@ type RegisterFields = {
     agreeToTerms: boolean;
 };
 
-// Тип для ошибки от бэкенда (ProblemDetails)
+// Тип для ошибки от бэкенда
 interface ProblemDetails {
     title?: string;
     detail?: string;
@@ -88,7 +81,6 @@ interface ProblemDetails {
     [key: string]: unknown;
 }
 
-// Type guard для проверки типа ошибки
 function isFetchBaseQueryError(error: unknown): error is FetchBaseQueryError {
     return typeof error === 'object' && error != null && 'status' in error;
 }
@@ -102,7 +94,7 @@ export default function RegistrationPage() {
         register,
         handleSubmit,
         watch,
-        control, // Добавляем control для Controller
+        control,
         formState: { errors },
     } = useForm<RegisterFields>();
 
@@ -147,7 +139,6 @@ export default function RegistrationPage() {
         return "Сильный";
     };
 
-    // Функция для форматирования ошибки
     const getErrorMessage = (): string | null => {
         if (!error) return null;
 
@@ -170,7 +161,7 @@ export default function RegistrationPage() {
         try {
             const { confirmPassword, agreeToTerms, ...registerData } = data;
             await registerUser(registerData).unwrap();
-            navigate('/');
+            navigate('/dashboard');
         } catch (err) {
             console.debug('Registration error:', err);
         }
@@ -179,55 +170,56 @@ export default function RegistrationPage() {
     const errorMessage = getErrorMessage();
 
     return (
-        <Box className="flex flex-col gap-y-16">
-            <Box>
-                <Link href="/" className="flex flex-row items-center gap-2">
-                    <ArrowBackIcon />
-                    <Typography>Вернуться на главную</Typography>
-                </Link>
-            </Box>
+        <Box sx={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            py: 3
+        }}>
+            <Box sx={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                <Paper
+                    elevation={0}
+                    sx={{
+                        width: '100%',
+                        maxWidth: 480,
+                        p: 3.5,
+                        borderRadius: 3,
+                        bgcolor: 'background.paper',
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        mx: 2,
+                    }}
+                >
+                    <Typography variant="h5" align="center" sx={{ fontWeight: 500, mb: 2 }}>
+                        Регистрация
+                    </Typography>
 
-            {/* Прогресс бар */}
-            <Box sx={{ width: '100%', maxWidth: '600px', mx: 'auto' }}>
-                <LinearProgress
-                    variant="determinate"
-                    value={progress}
-                    sx={{ height: 8, borderRadius: 4 }}
-                />
-                <Typography variant="caption" sx={{ mt: 1, display: 'block', textAlign: 'center' }}>
-                    Заполнено {Math.round(progress)}%
-                </Typography>
-            </Box>
-
-            <Box>
-                <CssBaseline enableColorScheme />
-                <Stack direction="column" justifyContent="space-between">
-                    <Card
-                        className="flex flex-col w-full p-10 gap-5 m-auto max-w-lg h-full"
-                        variant="outlined"
-                    >
-                        <Typography
-                            component="h1"
-                            className="text-center"
-                            variant="h4"
-                        >
-                            Регистрация
+                    {/* Прогресс бар */}
+                    <Box sx={{ mb: 2 }}>
+                        <LinearProgress
+                            variant="determinate"
+                            value={progress}
+                            sx={{ height: 4, borderRadius: 2 }}
+                        />
+                        <Typography variant="caption" sx={{ mt: 0.5, display: 'block', textAlign: 'center', color: 'text.secondary' }}>
+                            Заполнено {Math.round(progress)}%
                         </Typography>
+                    </Box>
 
-                        <Box
-                            onSubmit={handleSubmit(onSubmit)}
-                            component="form"
-                            noValidate
-                            className="flex flex-col w-full gap-4"
-                        >
+                    <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+                        <Stack spacing={2}>
                             {/* Имя пользователя */}
-                            <FormControl>
-                                <FormLabel htmlFor="username">Имя пользователя *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Имя пользователя *</FormLabel>
                                 <TextField
                                     error={!!errors.username}
                                     helperText={errors.username?.message}
                                     placeholder="ivan123"
-                                    fullWidth
                                     size="small"
                                     {...register("username", {
                                         required: "Обязательное поле",
@@ -241,14 +233,13 @@ export default function RegistrationPage() {
                             </FormControl>
 
                             {/* Email */}
-                            <FormControl>
-                                <FormLabel htmlFor="email">Email *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Email *</FormLabel>
                                 <TextField
                                     error={!!errors.email}
                                     helperText={errors.email?.message}
                                     type="email"
                                     placeholder="your@email.com"
-                                    fullWidth
                                     size="small"
                                     {...register("email", {
                                         required: "Обязательное поле",
@@ -261,45 +252,42 @@ export default function RegistrationPage() {
                             </FormControl>
 
                             {/* Имя */}
-                            <FormControl>
-                                <FormLabel htmlFor="firstName">Имя *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Имя *</FormLabel>
                                 <TextField
                                     error={!!errors.firstName}
                                     helperText={errors.firstName?.message}
                                     placeholder="Иван"
-                                    fullWidth
                                     size="small"
                                     {...register("firstName", { required: "Обязательное поле" })}
                                 />
                             </FormControl>
 
                             {/* Фамилия */}
-                            <FormControl>
-                                <FormLabel htmlFor="lastName">Фамилия *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Фамилия *</FormLabel>
                                 <TextField
                                     error={!!errors.lastName}
                                     helperText={errors.lastName?.message}
                                     placeholder="Петров"
-                                    fullWidth
                                     size="small"
                                     {...register("lastName", { required: "Обязательное поле" })}
                                 />
                             </FormControl>
 
                             {/* Отчество */}
-                            <FormControl>
-                                <FormLabel htmlFor="middleName">Отчество</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Отчество</FormLabel>
                                 <TextField
                                     placeholder="Иванович"
-                                    fullWidth
                                     size="small"
                                     {...register("middleName")}
                                 />
                             </FormControl>
 
-                            {/* Телефон - ИСПРАВЛЕНО! */}
-                            <FormControl>
-                                <FormLabel htmlFor="phone">Телефон</FormLabel>
+                            {/* Телефон */}
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Телефон</FormLabel>
                                 <Controller
                                     name="phone"
                                     control={control}
@@ -316,12 +304,11 @@ export default function RegistrationPage() {
                             </FormControl>
 
                             {/* Пароль */}
-                            <FormControl>
-                                <FormLabel htmlFor="password">Пароль *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Пароль *</FormLabel>
                                 <TextField
                                     type={showPassword ? "text" : "password"}
                                     placeholder="••••••••"
-                                    fullWidth
                                     size="small"
                                     error={!!errors.password}
                                     helperText={errors.password?.message}
@@ -331,6 +318,7 @@ export default function RegistrationPage() {
                                                 <IconButton
                                                     onClick={() => setShowPassword(!showPassword)}
                                                     edge="end"
+                                                    size="small"
                                                 >
                                                     {showPassword ? <VisibilityOff /> : <Visibility />}
                                                 </IconButton>
@@ -364,12 +352,11 @@ export default function RegistrationPage() {
                             </FormControl>
 
                             {/* Подтверждение пароля */}
-                            <FormControl>
-                                <FormLabel htmlFor="confirmPassword">Подтверждение пароля *</FormLabel>
+                            <FormControl fullWidth>
+                                <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>Подтверждение пароля *</FormLabel>
                                 <TextField
                                     type="password"
                                     placeholder="••••••••"
-                                    fullWidth
                                     size="small"
                                     error={!!errors.confirmPassword}
                                     helperText={errors.confirmPassword?.message}
@@ -386,6 +373,7 @@ export default function RegistrationPage() {
                                 <FormControlLabel
                                     control={
                                         <Checkbox
+                                            size="small"
                                             {...register("agreeToTerms", {
                                                 required: "Необходимо согласие"
                                             })}
@@ -393,10 +381,7 @@ export default function RegistrationPage() {
                                     }
                                     label={
                                         <Typography variant="body2">
-                                            Я согласен с{" "}
-                                            <Link href="/terms" target="_blank">
-                                                условиями использования
-                                            </Link>
+                                            Я согласен с условиями использования
                                         </Typography>
                                     }
                                 />
@@ -410,10 +395,16 @@ export default function RegistrationPage() {
                             {/* Кнопка */}
                             <Button
                                 type="submit"
+                                fullWidth
                                 variant="contained"
-                                size="large"
                                 disabled={isLoading}
-                                sx={{ mt: 2 }}
+                                sx={{
+                                    py: 1.2,
+                                    borderRadius: 2,
+                                    textTransform: 'none',
+                                    fontSize: '1rem',
+                                    mt: 1
+                                }}
                             >
                                 {isLoading ? (
                                     <>
@@ -425,17 +416,29 @@ export default function RegistrationPage() {
 
                             {/* Ошибка */}
                             {errorMessage && (
-                                <Alert severity="error" sx={{ mt: 2 }}>
+                                <Alert severity="error" sx={{ borderRadius: 2 }}>
                                     {errorMessage}
                                 </Alert>
                             )}
-                        </Box>
 
-                        <Typography className="text-center" variant="body2" sx={{ mt: 2 }}>
-                            Уже есть аккаунт? <Link href="/login">Войти</Link>
-                        </Typography>
-                    </Card>
-                </Stack>
+                            <Typography align="center" variant="body2" color="text.secondary">
+                                Уже есть аккаунт?{' '}
+                                <Link
+                                    href="/login"
+                                    sx={{
+                                        color: 'primary.main',
+                                        textDecoration: 'none',
+                                        '&:hover': {
+                                            textDecoration: 'underline',
+                                        }
+                                    }}
+                                >
+                                    Войти
+                                </Link>
+                            </Typography>
+                        </Stack>
+                    </Box>
+                </Paper>
             </Box>
         </Box>
     );

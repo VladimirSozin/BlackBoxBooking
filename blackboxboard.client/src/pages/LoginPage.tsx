@@ -1,8 +1,7 @@
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Alert, Card, Stack } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Alert, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Link from "@mui/material/Link";
@@ -15,7 +14,7 @@ import { loginThunk } from "../modules/auth/login/loginThunk";
 import { authSelectors } from "../modules/auth/authSlice";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment, Paper } from "@mui/material";
 
 type LoginFields = {
     email: string;
@@ -36,139 +35,147 @@ export default function LoginPage() {
     const isLoading = useAppSelector(authSelectors.selectIsLoading);
     const error = useAppSelector(authSelectors.selectError);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-
     const onSubmit: SubmitHandler<LoginFields> = async (data, event) => {
-        event?.preventDefault(); // ОСТАНАВЛИВАЕМ ПЕРЕЗАГРУЗКУ СТРАНИЦЫ
+        event?.preventDefault();
         try {
-            const result = await dispatch(loginThunk(data)).unwrap();
-            console.log('Login successful:', result);
-            navigate('/');
+            await dispatch(loginThunk(data)).unwrap();
+            navigate('/dashboard');
         } catch (err) {
-            console.error('Login failed:', err);
-            // Ошибка уже в Redux, ничего не делаем
+            // Ошибка уже в Redux
         }
     };
 
     return (
-        <Box className="flex flex-col gap-y-16">
-            <Box>
-                <Link href="/" className="flex flex-row items-center gap-2">
-                    <ArrowBackIcon />
-                    <Typography>Вернуться на главную</Typography>
-                </Link>
-            </Box>
-            <Box>
-                <CssBaseline enableColorScheme />
-                <Stack direction="column" justifyContent="space-between">
-                    <Card
-                        className="flex flex-col w-full p-10 gap-5 m-auto max-w-lg h-full"
-                        variant="outlined"
-                    >
-                        <Typography
-                            component="h1"
-                            className="text-center"
-                            variant="h4"
-                        >
-                            Вход в систему
-                        </Typography>
+        <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}>
+            <Paper
+                elevation={0}
+                sx={{
+                    width: '100%',
+                    maxWidth: 360,
+                    p: 3,
+                    borderRadius: 3,
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                }}
+            >
+                <Typography
+                    variant="h5"
+                    align="center"
+                    sx={{
+                        fontWeight: 500,
+                        mb: 3
+                    }}
+                >
+                    Вход
+                </Typography>
 
-                        {/* ВАЖНО: onSubmit теперь с event параметром */}
-                        <Box
-                            component="form"
-                            onSubmit={handleSubmit(onSubmit)}
-                            noValidate
-                            className="flex flex-col w-full gap-2"
-                        >
-                            <FormControl>
-                                <FormLabel htmlFor="email">Email</FormLabel>
-                                <TextField
-                                    error={!!errors.email}
-                                    helperText={errors.email?.message}
-                                    id="email"
-                                    type="email"
-                                    placeholder="your@email.com"
-                                    autoComplete="email"
-                                    autoFocus
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    disabled={isLoading}
-                                    {...register("email", {
-                                        required: "Это поле обязательно",
-                                        pattern: {
-                                            value: /\S+@\S+\.\S+/,
-                                            message: "Введите корректный email",
-                                        },
-                                    })}
-                                />
-                            </FormControl>
-
-                            <FormControl className="mb-4">
-                                <FormLabel htmlFor="password">Пароль</FormLabel>
-                                <TextField
-                                    placeholder="••••••••••••"
-                                    type={showPassword ? "text" : "password"}
-                                    id="password"
-                                    autoComplete="current-password"
-                                    required
-                                    fullWidth
-                                    variant="outlined"
-                                    error={!!errors.password}
-                                    helperText={errors.password?.message}
-                                    disabled={isLoading}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    edge="end"
-                                                >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    {...register("password", {
-                                        required: "Это поле обязательно",
-                                        minLength: {
-                                            value: 6,
-                                            message: "Минимум 6 символов",
-                                        },
-                                    })}
-                                />
-                            </FormControl>
-
-                            <Button
-                                type="submit"
+                <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <Stack spacing={2.5}>
+                        <FormControl fullWidth>
+                            <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>
+                                Email
+                            </FormLabel>
+                            <TextField
+                                error={!!errors.email}
+                                helperText={errors.email?.message}
+                                size="small"
+                                placeholder="your@email.com"
+                                autoComplete="email"
+                                autoFocus
+                                required
                                 fullWidth
-                                variant="contained"
                                 disabled={isLoading}
-                                size="large"
+                                {...register("email", {
+                                    required: "Это поле обязательно",
+                                    pattern: {
+                                        value: /\S+@\S+\.\S+/,
+                                        message: "Введите корректный email",
+                                    },
+                                })}
+                            />
+                        </FormControl>
+
+                        <FormControl fullWidth>
+                            <FormLabel sx={{ fontSize: '0.9rem', mb: 0.5 }}>
+                                Пароль
+                            </FormLabel>
+                            <TextField
+                                size="small"
+                                placeholder="••••••••"
+                                type={showPassword ? "text" : "password"}
+                                autoComplete="current-password"
+                                required
+                                fullWidth
+                                error={!!errors.password}
+                                helperText={errors.password?.message}
+                                disabled={isLoading}
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                edge="end"
+                                                size="small"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                {...register("password", {
+                                    required: "Это поле обязательно",
+                                    minLength: {
+                                        value: 6,
+                                        message: "Минимум 6 символов",
+                                    },
+                                })}
+                            />
+                        </FormControl>
+
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            disabled={isLoading}
+                            sx={{
+                                py: 1.2,
+                                borderRadius: 2,
+                                textTransform: 'none',
+                                fontSize: '1rem',
+                            }}
+                        >
+                            {isLoading ? "Вход..." : "Войти"}
+                        </Button>
+
+                        {error && (
+                            <Alert severity="error" sx={{ borderRadius: 2 }}>
+                                {error}
+                            </Alert>
+                        )}
+
+                        <Typography align="center" variant="body2" color="text.secondary">
+                            Нет аккаунта?{' '}
+                            <Link
+                                href="/registration"
+                                sx={{
+                                    color: 'primary.main',
+                                    textDecoration: 'none',
+                                    '&:hover': {
+                                        textDecoration: 'underline',
+                                    }
+                                }}
                             >
-                                {isLoading ? "Вход..." : "Войти"}
-                            </Button>
-
-                            {/* Ошибка отображается, но страница не перезагружается */}
-                            {error && (
-                                <Alert severity="error" sx={{ mt: 2 }}>
-                                    {error}
-                                </Alert>
-                            )}
-                        </Box>
-
-                        <Box className="flex flex-col gap-2 mt-4">
-                            <Typography className="text-center">
-                                Нет аккаунта?{" "}
-                                <Link href="/registration" variant="body2">
-                                    Зарегистрироваться
-                                </Link>
-                            </Typography>
-                        </Box>
-                    </Card>
-                </Stack>
-            </Box>
+                                Зарегистрироваться
+                            </Link>
+                        </Typography>
+                    </Stack>
+                </Box>
+            </Paper>
         </Box>
     );
 }

@@ -104,20 +104,13 @@ const MainPage: FunctionComponent = () => {
     const user = useAppSelector(authSelectors.selectUser);
     const isAuthenticated = useAppSelector(authSelectors.selectIsAuthenticated);
     const isLoading = useAppSelector(authSelectors.selectIsLoading);
-    const token = useAppSelector(authSelectors.selectAccessToken);
 
-    // Отладка
     useEffect(() => {
-        console.log('MainPage state:', {
-            isAuthenticated,
-            user: user ? `${user.firstName} ${user.lastName}` : null,
-            token: token ? 'есть' : 'нет',
-            isLoading,
-            storedToken: localStorage.getItem('accessToken') ? 'есть' : 'нет'
-        });
-    }, [isAuthenticated, user, token, isLoading]);
+        if (!isAuthenticated && !isLoading) {
+            navigate('/');
+        }
+    }, [isAuthenticated, isLoading, navigate]);
 
-    // Фильтрация данных
     const filteredLeaves = mockLeaves.filter((leave: LeaveRequest) => {
         const matchesStatus = statusFilter === 'all' || leave.status === statusFilter;
         return matchesStatus;
