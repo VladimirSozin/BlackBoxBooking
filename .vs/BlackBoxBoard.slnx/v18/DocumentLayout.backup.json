@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard\\blackboxboard.client\\src\\pages\\loginpage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|solutionrelative:blackboxboard.client\\src\\pages\\loginpage.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard\\blackboxboard.client\\src\\app\\router.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|solutionrelative:blackboxboard.client\\src\\app\\router.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard\\blackboxboard.client\\src\\shared\\api\\baseapi.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|solutionrelative:blackboxboard.client\\src\\shared\\api\\baseapi.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard\\blackboxboard.client\\src\\modules\\auth\\authslice.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|solutionrelative:blackboxboard.client\\src\\modules\\auth\\authslice.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|c:\\users\\admstrekv71\\desktop\\otus\\blackboxboard\\blackboxboard\\blackboxboard.client\\src\\modules\\auth\\authapi.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{C0550C7C-71F3-FE88-DD85-6F711461A3D3}|blackboxboard.client\\blackboxboard.client.esproj|solutionrelative:blackboxboard.client\\src\\modules\\auth\\authapi.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "router.tsx",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\app\\router.tsx",
+              "RelativeDocumentMoniker": "blackboxboard.client\\src\\app\\router.tsx",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\app\\router.tsx",
+              "RelativeToolTip": "blackboxboard.client\\src\\app\\router.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-16T11:46:08.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginPage.tsx",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\pages\\LoginPage.tsx",
+              "RelativeDocumentMoniker": "blackboxboard.client\\src\\pages\\LoginPage.tsx",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\pages\\LoginPage.tsx*",
+              "RelativeToolTip": "blackboxboard.client\\src\\pages\\LoginPage.tsx*",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-16T11:44:43.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "authSlice.ts",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\modules\\auth\\authSlice.ts",
+              "RelativeDocumentMoniker": "blackboxboard.client\\src\\modules\\auth\\authSlice.ts",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\modules\\auth\\authSlice.ts",
+              "RelativeToolTip": "blackboxboard.client\\src\\modules\\auth\\authSlice.ts",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAwA0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-16T11:44:24.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "authApi.ts",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\modules\\auth\\authApi.ts",
+              "RelativeDocumentMoniker": "blackboxboard.client\\src\\modules\\auth\\authApi.ts",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\modules\\auth\\authApi.ts",
+              "RelativeToolTip": "blackboxboard.client\\src\\modules\\auth\\authApi.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-16T11:43:47.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "baseApi.ts",
+              "DocumentMoniker": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\shared\\api\\baseApi.ts",
+              "RelativeDocumentMoniker": "blackboxboard.client\\src\\shared\\api\\baseApi.ts",
+              "ToolTip": "C:\\Users\\admstrekv71\\Desktop\\OTUS\\BlackBoxBoard\\BlackBoxBoard\\blackboxboard.client\\src\\shared\\api\\baseApi.ts",
+              "RelativeToolTip": "blackboxboard.client\\src\\shared\\api\\baseApi.ts",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-03-16T11:40:42.587Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

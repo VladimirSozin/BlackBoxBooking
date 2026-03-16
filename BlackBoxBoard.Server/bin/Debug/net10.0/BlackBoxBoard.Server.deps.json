@@ -10,6 +10,7 @@
         "dependencies": {
           "AspNetCore.HealthChecks.NpgSql": "9.0.0",
           "AutoMapper": "16.0.0",
+          "BCrypt.Net-Next": "4.1.0",
           "FluentValidation": "12.1.1",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.0.0",
@@ -17,7 +18,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.3",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "10.0.3",
           "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0",
-          "Microsoft.AspNetCore.SpaProxy": "10.0.3",
+          "Microsoft.AspNetCore.SpaProxy": "10.0.5",
           "Microsoft.EntityFrameworkCore": "10.0.3",
           "Microsoft.EntityFrameworkCore.Design": "10.0.3",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.3",
@@ -58,6 +59,14 @@
           "lib/net10.0/AutoMapper.dll": {
             "assemblyVersion": "16.0.0.0",
             "fileVersion": "16.0.0.0"
+          }
+        }
+      },
+      "BCrypt.Net-Next/4.1.0": {
+        "runtime": {
+          "lib/net10.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
@@ -150,11 +159,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.SpaProxy/10.0.3": {
+      "Microsoft.AspNetCore.SpaProxy/10.0.5": {
         "runtime": {
           "lib/net10.0/Microsoft.AspNetCore.SpaProxy.dll": {
-            "assemblyVersion": "10.0.3.0",
-            "fileVersion": "10.0.326.7603"
+            "assemblyVersion": "10.0.5.0",
+            "fileVersion": "10.0.526.15411"
           }
         }
       },
@@ -1115,6 +1124,13 @@
       "path": "automapper/16.0.0",
       "hashPath": "automapper.16.0.0.nupkg.sha512"
     },
+    "BCrypt.Net-Next/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5YT3DKllmtkyW68PjURu/V1TOe4MKiByKwsRNVcfYE1S5KuFTeozdmKzyNzolKiQF391OXCaQtINvYT3j1ERzQ==",
+      "path": "bcrypt.net-next/4.1.0",
+      "hashPath": "bcrypt.net-next.4.1.0.nupkg.sha512"
+    },
     "FluentValidation/12.1.1": {
       "type": "package",
       "serviceable": true,
@@ -1178,12 +1194,12 @@
       "path": "microsoft.aspnetcore.mvc.versioning/5.1.0",
       "hashPath": "microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.SpaProxy/10.0.3": {
+    "Microsoft.AspNetCore.SpaProxy/10.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1HY+pNfnSoacXfRpoHBHnM1HnYEbS5Tz5k8knWR+C+eqk3xlHm2vu2NDoYA2oClwq2P9OSSRdT013PIx8kS4mQ==",
-      "path": "microsoft.aspnetcore.spaproxy/10.0.3",
-      "hashPath": "microsoft.aspnetcore.spaproxy.10.0.3.nupkg.sha512"
+      "sha512": "sha512-q9mjn2xgPb6mnNJwcyoGhFvnNH10KL8ok6t7C02QoxUSf1utzzbd9LnCfk2dQy7z22+pyYRBz1Ip2xfT1PW2TQ==",
+      "path": "microsoft.aspnetcore.spaproxy/10.0.5",
+      "hashPath": "microsoft.aspnetcore.spaproxy.10.0.5.nupkg.sha512"
     },
     "Microsoft.Build.Framework/18.0.2": {
       "type": "package",

@@ -1,6 +1,7 @@
-﻿namespace BlackBoxBoard.Server.Modules.Shared.Domain.Abstractions
+﻿namespace BlackBoxBoard.Server.Modules.Shared.Domain.Abstractions;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-    }
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+    Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default);
 }

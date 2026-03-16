@@ -1,9 +1,15 @@
-import { Role } from "../auth/authSlice";
-
 export type UserId = string;
 
-export type User = {
-	id: UserId;
-	email: string;
-	roles: Role[];
-};
+export interface User {
+    id: number;
+    username: string;
+    email: string;
+    firstName: string;  
+    lastName: string;   
+    middleName?: string;
+    phone?: string;
+    roleId: number;
+    roleName?: string;
+    isEmployee: boolean;
+    lastLoginAt?: string;
+}

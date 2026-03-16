@@ -2,9 +2,8 @@
 using BlackBoxBoard.Server.Modules.Users.Domain.Interfaces;
 using BlackBoxBoard.Server.Modules.Users.Infrastructure.Persistence.Repositories;
 using BlackBoxBoard.Server.Modules.Users.Infrastructure.Services;
-using BlackBoxBoard.Server.Modules.Users.Public;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.DependencyInjection;
+using AuthenticationService = BlackBoxBoard.Server.Modules.Users.Infrastructure.Services.AuthenticationService;
+using IAuthenticationService = BlackBoxBoard.Server.Modules.Users.Public.IAuthenticationService;
 
 namespace BlackBoxBoard.Server.Modules.Users;
 
@@ -19,8 +18,9 @@ public static class ModuleRegistration
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(ModuleRegistration).Assembly));
 
-        services.AddScoped<PasswordHasher>();
-        services.AddScoped<JwtTokenGenerator>();
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         return services;
     }

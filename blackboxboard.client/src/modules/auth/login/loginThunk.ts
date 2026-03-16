@@ -1,46 +1,32 @@
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
-import { ActionReducerMapBuilder } from "@reduxjs/toolkit/react";
-import { createAppAsyncThunk } from "../../../shared/redux";
-import { getErrorMessage } from "../../../shared/utils/getErrorMessage";
-import { authApi, LoginResponse } from "../authApi";
-import { AuthState } from "../authSlice";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { apiClient } from '../../../shared/api/baseApi';
+import { AuthResponse, LoginRequest } from '../authApi';
 
-export const loginThunk = createAppAsyncThunk<
-	LoginResponse,
-	{ email: string; password: string }
->("auth/login", async (reqeust, { dispatch, rejectWithValue, extra }) => {
-	try {
-		const response = await dispatch(
-			authApi.endpoints.login.initiate(reqeust)
-		).unwrap();
+export const loginThunk = createAsyncThunk(
+    'auth/login',
+    async (data: LoginRequest, { rejectWithValue }) => {
+        try {
+            console.log('🟡 Login attempt:', data.email);
 
-		extra.router.navigate("/profile");
+            const response = await apiClient<AuthResponse>('/auth/login', {
+                method: 'POST',
+                body: JSON.stringify(data),
+            });
 
-		return response;
-	} catch (error) {
-		const errorMessage = getErrorMessage(
-			error as FetchBaseQueryError | undefined
-		);
-		return rejectWithValue(errorMessage);
-	}
-});
+            console.log('🟢 Login response:', response);
 
-export const loginCases = (builder: ActionReducerMapBuilder<AuthState>) => {
-	builder
-		.addCase(loginThunk.pending, (state) => {
-			state.fetchStatus = "loading";
-			state.loginError = undefined;
-		})
-		.addCase(loginThunk.fulfilled, (state, { payload }) => {
-			state.accessToken = payload.accessToken;
-			state.userId = payload.userId;
-			state.roles = payload.roles;
-			state.isAuthenticated = true;
-			state.fetchStatus = "succeeded";
-			state.loginError = undefined;
-		})
-		.addCase(loginThunk.rejected, (state, action) => {
-			state.fetchStatus = "failed";
-			state.loginError = action.payload;
-		});
-};
+            // Сохраняем токен в localStorage
+            localStorage.setItem('accessToken', response.accessToken);
+            console.log('💾 Token saved to localStorage');
+
+            return response;
+        } catch (error: any) {
+            console.error('🔴 Login error:', error);
+            localStorage.removeItem('accessToken');
+
+            // Возвращаем понятное сообщение
+            return rejectWithValue(error.message || 'Неверный email или пароль');
+        }
+    }
+);

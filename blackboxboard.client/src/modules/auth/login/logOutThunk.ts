@@ -1,42 +1,20 @@
-import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { createAppAsyncThunk } from "../../../shared/redux";
-import { getErrorMessage } from "../../../shared/utils/getErrorMessage";
-import { authApi } from "../authApi";
-import { AuthState } from "../authSlice";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { apiClient } from '../../../shared/api/baseApi';
+import { authActions } from '../authSlice';
 
-export const logOutThunk = createAppAsyncThunk<void, void>(
-	"auth/logout",
-	async (_, { dispatch, rejectWithValue, extra }) => {
-		try {
-			await dispatch(authApi.endpoints.logout.initiate()).unwrap();
 
-			extra.router.navigate("/");
-		} catch (error) {
-			const errorMessage = getErrorMessage(
-				error as FetchBaseQueryError | undefined
-			);
-			return rejectWithValue(errorMessage);
-		}
-	}
+export const logoutThunk = createAsyncThunk(
+    'auth/logout',
+    async (_, { dispatch, rejectWithValue }) => {
+        try {
+            await apiClient('/auth/logout', { method: 'POST' });
+            dispatch(authActions.logOut());
+            localStorage.removeItem('accessToken');
+            return true;
+        } catch (error) {
+            dispatch(authActions.logOut());
+            localStorage.removeItem('accessToken');
+            return rejectWithValue(error);
+        }
+    }
 );
-
-export const logOutCases = (builder: ActionReducerMapBuilder<AuthState>) => {
-	builder
-		.addCase(logOutThunk.pending, (state) => {
-			state.fetchStatus = "loading";
-			state.loginError = undefined;
-		})
-		.addCase(logOutThunk.fulfilled, (state) => {
-			state.accessToken = undefined;
-			state.userId = undefined;
-			state.roles = [];
-			state.isAuthenticated = false;
-			state.fetchStatus = "succeeded";
-			state.loginError = undefined;
-		})
-		.addCase(logOutThunk.rejected, (state, action) => {
-			state.fetchStatus = "failed";
-			state.loginError = action.payload || "Неизвестная ошибка";
-		});
-};

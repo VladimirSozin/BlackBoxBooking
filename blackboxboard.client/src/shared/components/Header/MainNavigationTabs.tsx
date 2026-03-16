@@ -1,9 +1,5 @@
-import CakeIcon from "@mui/icons-material/Cake";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import HomeIcon from "@mui/icons-material/Home";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import { matchPath, NavLink, useLocation } from "react-router";
+import { Box, Tab, Tabs } from "@mui/material";
+import { matchPath, NavLink, useLocation } from "react-router-dom";
 
 function useRouteMatch(patterns: readonly string[]) {
 	const { pathname } = useLocation();
@@ -20,43 +16,50 @@ function useRouteMatch(patterns: readonly string[]) {
 }
 
 export default function MainNavigationTabs() {
-	const routeMatch = useRouteMatch(["/"]);
+	const routeMatch = useRouteMatch(["/", "/employees", "/requests", "/my-leaves"]);
 	const currentTab = routeMatch?.pattern?.path;
 
 	return (
-		<Tabs value={currentTab}>
-			<Tab
-				value="/"
-				icon={<HomeIcon />}
-				iconPosition="start"
-				label="Главная"
-				component={NavLink}
-				to="/"
-			/>
-			<Tab
-				value="/"
-				icon={<FavoriteIcon />}
-				iconPosition="start"
-				label="Список сотрудников"
-				component={NavLink}
-				to="/"
-			/>
-			<Tab
-				value="/"
-				icon={<CakeIcon />}
-				iconPosition="start"
-				label="Заявки"
-				component={NavLink}
-				to="/"
-			/>
-			<Tab
-				value="/"
-				icon={<CakeIcon />}
-				iconPosition="start"
-				label="Мои отпуска"
-				component={NavLink}
-				to="/"
-			/>
-		</Tabs>
+		<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+			<Tabs
+				value={currentTab || "/"}
+				textColor="primary"
+				indicatorColor="primary"
+				sx={{
+					'& .MuiTab-root': {
+						textTransform: 'none',
+						fontWeight: 500,
+						fontSize: '0.95rem',
+						minHeight: 48,
+						px: 3,
+					}
+				}}
+			>
+				<Tab
+					value="/"
+					label="Главная"
+					component={NavLink}
+					to="/"
+				/>
+				<Tab
+					value="/employees"
+					label="Сотрудники"
+					component={NavLink}
+					to="/employees"
+				/>
+				<Tab
+					value="/requests"
+					label="Заявки"
+					component={NavLink}
+					to="/requests"
+				/>
+				<Tab
+					value="/my-leaves"
+					label="Мои отпуска"
+					component={NavLink}
+					to="/my-leaves"
+				/>
+			</Tabs>
+		</Box>
 	);
 }
